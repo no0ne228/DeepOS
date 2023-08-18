@@ -19,7 +19,7 @@ function dash$(fullCommand) {
                 $('div.global.screen.terminal.text').append(`<span class="global screen terminal text">${output}</span>`);
                 break;
             case 'term.println':
-                var output = fullCommand.slice(13);
+                var output = eval(fullCommand.slice(13));
                 $('div.global.screen.terminal.text').append(`<p class="global screen terminal text">${output}</p>`);
                 break;
             case 'term.printlnc':
