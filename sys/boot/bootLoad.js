@@ -32,9 +32,9 @@ $(document).ready(function() {
                 // Execute command from input
                 dash$(document.querySelector('input.global.screen.terminal').value)
             }
-          });
-          // Detect when mouse pressed
-          $(document).click(function(e) {
+         });
+         // Detect when mouse pressed
+         $(document).click(function(e) {
             if (e.button == 0) {
                 // Focus on input to prevent bug
                 $('input.global.screen.terminal').focus();
