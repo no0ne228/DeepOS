@@ -2,7 +2,7 @@
 
 An OS, 100% made with HTML, CSS, and, JS, it only uses some JavaScript libraries like jQuery
 
-Open in fullscreen for the best experience
+Open in fullscreen for the best experience.
 
 For now you can run it only with your browser.
 
