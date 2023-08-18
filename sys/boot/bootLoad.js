@@ -40,6 +40,6 @@ $(document).ready(function() {
                 $('input.global.screen.terminal').focus();
             }
         });
-        $('body').append
+        $('body').append('<script src="sys/boot/startup.js"></script>')
     }
 });
