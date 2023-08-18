@@ -1,6 +1,6 @@
 // /bin/Dash/dash.js
 
-const dashList = ["term.print", "term.println", "term.printlnc"]
+const dashList = ["term.print", "term.println", "term.printlnc", "help"]
 
 function dash$(fullCommand) {
     // Get short command
