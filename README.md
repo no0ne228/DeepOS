@@ -4,7 +4,7 @@ An OS, 100% made with HTML, CSS, and, JS, it only uses some JavaScript libraries
 
 Open in fullscreen for the best experience.
 
-For now you can run it only with your browser.
+For now you can run it only with your browser [here](https://kolibriking.github.io/DeepOS/index.html).
 
 ## Errors
 
