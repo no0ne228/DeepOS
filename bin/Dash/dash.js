@@ -27,6 +27,14 @@ function dash$(fullCommand) {
                 var output = eval(fullCommand.slice(22));
                 $('div.global.screen.terminal.text').append(`<p class="global screen terminal textc" style="color:${color};">${output}</p>`);
                 break;
+            case 'help':
+                dash$(`term.println 'List of avalible commands: (4 total)'`);
+                dash$(`term.println ''`);
+                dash$(`term.println 'help - Displays this help message'`);
+                dash$(`term.println 'term.print [text]- Displays text'`);
+                dash$(`term.println 'term.println [text] - Displays text in a new line'`);
+                dash$(`term.println 'term.printlnc [hex color] [text] - Displays colored text in a new line'`)
+                break;
             default:
                 break;
         }
