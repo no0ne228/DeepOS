@@ -1,0 +1,23 @@
+body {
+    margin:0%;
+    background-color: #000000;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+input.global.screen.terminal {
+    background-color: #000000;
+    outline: none;
+    border: none;
+    font-family: Monospace;
+    color: white;
+}
+* {
+    cursor: none;
+}
+span.global.screen.terminal.text, p.global.screen.terminal.text {
+    font-family: Monospace;
+    color: white;
+}
+p.global.screen.terminal.textc {
+    font-family: Monospace;
+}
