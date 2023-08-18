@@ -6,4 +6,4 @@ Open in fullscreen for the best experience
 
 ## Errors
 
-If in terminal session you unfocused the input, press ``CTRL+R``
+ - Command error: If commands aren't working, try check the console, press ``CTRL+Shift+I`` to open it, if there is error like ``ReferenceError`` or ``SyntaxError``, then there is error in code.
