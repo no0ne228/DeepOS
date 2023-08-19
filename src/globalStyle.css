@@ -15,6 +15,8 @@ input.global.screen.terminal {
     cursor: none;
 }
 span.global.screen.terminal.text, p.global.screen.terminal.text {
+    margin-top: 1px;
+    margin-bottom: 1px;
     font-family: Monospace;
     color: white;
 }
