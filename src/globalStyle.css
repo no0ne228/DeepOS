@@ -11,6 +11,12 @@ input.global.screen.terminal {
     font-family: Monospace;
     color: white;
 }
+span.global.screen.terminal {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    font-family: Monospace;
+    color: white;
+}
 * {
     cursor: none;
 }
