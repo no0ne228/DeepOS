@@ -2,7 +2,8 @@
 // Create terminal elements
 $('div.global.screen').append('<div class="global screen terminal container"></div>');
 $('div.global.screen.terminal.container').append('<div class="global screen terminal text"></div>');
-$('div.global.screen.terminal.container').append('<input class="div global screen terminal">');
+$('div.global.screen.terminal.container').append(`<span class="global screen terminal">${GetIP()}:/:</span>`);
+$('div.global.screen.terminal.container').append('<input class="global screen terminal">');
 // Focus on input field
 $('input.global.screen.terminal').focus();
 // Detect when keys pressed
@@ -22,4 +23,4 @@ $(document).click(function(e) {
         $('input.global.screen.terminal').focus();
         }
 });
-$('body').append('<script src="sys/boot/startup.js"></script>')
+$('body').append('<script src="sys/boot/startup.js"></script>');
