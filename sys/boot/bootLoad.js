@@ -30,7 +30,8 @@ $(document).ready(function() {
             // Detect if enter pressed
             if(e.keyCode == 13){
                 // Execute command from input
-                dash$(document.querySelector('input.global.screen.terminal').value)
+                dash$(document.querySelector('input.global.screen.terminal').value);
+                $('input.global.screen.terminal').val('');
             }
          });
         // Detect when mouse pressed
