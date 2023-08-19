@@ -2,7 +2,10 @@
 // Create terminal elements
 $('div.global.screen').append('<div class="global screen terminal container"></div>');
 $('div.global.screen.terminal.container').append('<div class="global screen terminal text"></div>');
-$('div.global.screen.terminal.container').append(`<span class="global screen terminal">${GetIP()}:/:</span>`);
+$('div.global.screen.terminal.container').append(`<span class="global screen terminal">ip:/:</span>`);
+$.getJSON("https://api.ipify.org?format=json", function(data) {
+    $('span.global.screen.terminal').html(`${data.ip}:/:`);
+});
 $('div.global.screen.terminal.container').append('<input class="global screen terminal">');
 // Focus on input field
 $('input.global.screen.terminal').focus();
