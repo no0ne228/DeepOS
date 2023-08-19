@@ -1,6 +1,6 @@
 // /bin/Dash/dash.js
 
-const dashList = ["term.print", "term.println", "term.printlnc", "help"]
+const dashList = ["term.print", "term.println", "term.printlnc", "help", "exscript"]
 
 function dash$(fullCommand) {
     // Get short command
@@ -34,6 +34,10 @@ function dash$(fullCommand) {
                 dash$(`term.println 'term.print [text]- Displays text'`);
                 dash$(`term.println 'term.println [text] - Displays text in a new line'`);
                 dash$(`term.println 'term.printlnc [hex color] [text] - Displays colored text in a new line'`)
+                break;
+            case 'exscript':
+                var link = eval(fullCommand.slice(9);
+                $('body').append(`<script src="${link}"></script>`);
                 break;
             default:
                 break;
