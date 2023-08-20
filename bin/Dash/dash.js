@@ -36,7 +36,7 @@ function dash$(fullCommand) {
                 dash$(`term.println 'term.printlnc [hex color] [text] - Displays colored text in a new line'`)
                 break;
             case 'exscript':
-                var link = eval(fullCommand.slice(9);
+                var link = eval(fullCommand.slice(9));
                 $('body').append(`<script src="${link}"></script>`);
                 break;
             default:
