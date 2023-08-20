@@ -12,6 +12,17 @@ function dash$(fullCommand) {
             break;
         }
     }
+    // Get argument
+    var startArgReadIndex = fullCommand.length + 2;
+    argReadString = fullCommand.slice(startArgReadIndex);
+    var commandArg = '';
+    for (char of argReadString) {
+        if (!(char === ' ')) {
+            commandArg = commandArg + char;
+        } else {
+            break;
+        }
+    }
     if (dashList.includes(shortCommand)) {
         switch (shortCommand) {
             case 'term.print':
@@ -19,13 +30,25 @@ function dash$(fullCommand) {
                 $('div.global.screen.terminal.text').append(`<span class="global screen terminal text">${output}</span>`);
                 break;
             case 'term.println':
-                var output = eval(fullCommand.slice(13));
-                $('div.global.screen.terminal.text').append(`<p class="global screen terminal text">${output}</p>`);
-                break;
-            case 'term.printlnc':
-                var color = fullCommand.slice(14, 22);
-                var output = eval(fullCommand.slice(22));
-                $('div.global.screen.terminal.text').append(`<p class="global screen terminal textc" style="color:${color};">${output}</p>`);
+                switch (commandArg) {
+                    case '-c':
+                        var colorRead = fullCommand.slice(16); //term.println -c #
+                        var color = '';
+                        for (char of colorRead) {
+                            if (!(char === ' ')) {
+                                color = colorRead + char;
+                            } else {
+                                break;
+                            }
+                        }
+                        var output = eval(fullCommand.slice(22));
+                        $('div.global.screen.terminal.text').append(`<p class="global screen terminal textc" style="color:${color};">${output}</p>`);
+                        break;
+                    default:
+                        var output = eval(fullCommand.slice(13));
+                        $('div.global.screen.terminal.text').append(`<p class="global screen terminal text">${output}</p>`);
+                        break;
+                }
                 break;
             case 'help':
                 dash$(`term.println 'List of avalible commands: (4 total)'`);
