@@ -32,6 +32,12 @@ function dash$(fullCommand) {
                         var color = fullCommand.slice(13, 19);
                         $('div.global.screen.terminal.text').append(`<span class="global screen terminal text cr" style="color:${color};">${output}</span>`);
                         break;
+
+                        case 'b':
+                            var output = eval(fullCommand.slice(21));
+                            var color = fullCommand.slice(13, 19);
+                            $('div.global.screen.terminal.text').append(`<p class="global screen terminal text cr" style="background-color:${color};">${output}</p>`);
+                            break;
                     default:
                         var output = eval(fullCommand.slice(11));
                         $('div.global.screen.terminal.text').append(`<span class="global screen terminal text">${output}</span>`);
@@ -44,6 +50,11 @@ function dash$(fullCommand) {
                         var output = eval(fullCommand.slice(24));
                         var color = fullCommand.slice(15, 21);
                         $('div.global.screen.terminal.text').append(`<p class="global screen terminal text cr" style="color:${color};">${output}</p>`);
+                        break;
+                    case 'b':
+                        var output = eval(fullCommand.slice(24));
+                        var color = fullCommand.slice(15, 21);
+                        $('div.global.screen.terminal.text').append(`<p class="global screen terminal text cr" style="background-color:${color};">${output}</p>`);
                         break;
                     default:
                         var output = eval(fullCommand.slice(13));
