@@ -75,7 +75,7 @@ function dash$(fullCommand) {
                 dash$(`term.println 'import [dir from root]'`);
                 break;
             case 'import':
-                var link = eval(fullCommand.slice(9));
+                var link = eval(fullCommand.slice(7));
                 $('body').append(`<script src="${link}"></script>`);
                 break;
             default:
