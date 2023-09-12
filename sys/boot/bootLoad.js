@@ -1,5 +1,8 @@
 // /sys/boot/bootLoad.js
 
+// Kernel (32) (non-graphical)
+$('body').append('<script src="sys/krnl32/var.js"></script>');
+
 // Detect boot type
 var BootType = 'n';
 //This used to print time after message in console
@@ -16,7 +19,7 @@ if ('DeepOS.BootType' in localStorage) {
 // The main boot process
 $(document).ready(function() {
     // Check boot type
-    if (BootType = 'terminal') {
+    if (BootType === 'terminal') {
         $('body').append('<script src="bin/term/run.js"></script>');
     }
 });

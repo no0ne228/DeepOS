@@ -1,0 +1,2 @@
+var GLOBAL_TERM_DIR = '/';
+var GLOBAL_TERM_LASTCMD = '';

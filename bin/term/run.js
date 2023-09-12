@@ -11,19 +11,19 @@ $('div.global.screen.terminal.container').append('<input class="global screen te
 $('input.global.screen.terminal').focus();
 // Detect when keys pressed
 $('input.global.screen.terminal').keyup(function (e){
-        $(this).attr('size', $(this).val().length);
+    $(this).attr('size', $(this).val().length);
         // Detect if enter pressed
         if(e.keyCode == 13){
         // Execute command from input
         dash$(document.querySelector('input.global.screen.terminal').value);
         $('input.global.screen.terminal').val('');
-        }
+    }
 });
 // Detect when mouse pressed
 $(document).click(function(e) {
-        if (e.button == 0) {
+    if (e.button == 0) {
         // Focus on input to prevent bug
         $('input.global.screen.terminal').focus();
-        }
+    }
 });
 $('body').append('<script src="sys/boot/startup.js"></script>');
