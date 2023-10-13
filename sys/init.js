@@ -6,7 +6,7 @@ function importScript(scriptName) {
   // Function to load scripts
   var script = document.createElement('script'); // Create script
   if (!(scriptName[0] == '/')) { // Check if script direction is NOT absolute
-    script.src = "/sys/modules/" + scriptName + ".js"; // Get script direction
+    script.src = "/sys/lib/" + scriptName + ".js"; // Get script direction
   } else {
     script.src = scriptName;
   }

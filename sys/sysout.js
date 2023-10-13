@@ -20,5 +20,23 @@ const sysout = {
     } else {
       console.warn('Error: cannot execute system.nl without running terminal [/sys/sysout.js:14]');
     }
+  },
+  "in": function(finite) { // Get user input
+    if ('DeepOS.Term' in localStorage) { // Check if terminal exists
+      var input = document.createElement('input'); // Initialize new element
+      input.id = 'term-input'; // Set input id
+      input.type = 'text'; // Set input type
+      document.querySelector(localStorage.getItem('DeepOS.Term')).appendChild(input); // Append input
+      document.getElementById('term-input').focus();
+      var text = '';
+      document.getElementById('term-input').addEventListener('keypress', function (e) {
+        text = document.getElementById('term-input').value;
+        document.activeElement.blur();
+        document.getElementById('term-input').remove();
+        console.log(text);
+      });
+    } else {
+      console.warn('Error: cannot execute system.in without running terminal [/sys/sysout.js:31]');
+    }
   }
 }

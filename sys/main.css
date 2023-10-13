@@ -11,5 +11,7 @@ body {
 #term-input {
   color: white;
   font-family: Monospace;
-  outlin
+  outline: none;
+  border: none;
+  background-color: #000000;
 }
