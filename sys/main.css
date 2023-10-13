@@ -1,0 +1,15 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  margin: 0px;
+}
+.term-text {
+  color: white;
+  font-family: Monospace;
+}
+#term-input {
+  color: white;
+  font-family: Monospace;
+  outlin
+}
