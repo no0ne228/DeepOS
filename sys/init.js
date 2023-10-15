@@ -1,8 +1,6 @@
 // /sys/init.js
 
-/*
- * This is actual DeepOS kernel, it creates and loades necessary functions
- */
+// This is actual DeepOS kernel, it creates and loades necessary functions
 
 // System functions
 console.log('Initializing system... [/sys/init.js]');

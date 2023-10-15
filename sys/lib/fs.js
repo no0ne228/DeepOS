@@ -16,5 +16,9 @@ const fs = {
     } else {
       console.warn('Error: no temporary localStorage item found (' + tmpName + ')');
     }
+  },
+  "readFile": function(fileUrl) {
+    this.readFileTmp(fileUrl, fileUrl);
+    return this.getFileTmp(fileUrl);
   }
 }

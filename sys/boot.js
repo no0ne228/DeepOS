@@ -4,9 +4,18 @@
 importScript('std');
 importScript('fs');
 importScript('ver');
+importScript('Term');
 
 document.body.onload = function() { // Detect when all kernel scripts loaded, this is actully boot
-  std.out(ver.header); // Print os name and version (DeepOS v.MAJOR.MINOR.MORE_MINOR)
-  std.nl(); // New line
-  std.out('This is only a short test, soon updates will be released, press CTRL+Shift+I on Edge/Chrome to open console, there you can check objects like std, fs, and ver');
+  function printWelcomeText() { // Declare function to print welcome text to econome time
+    std.out(ver.header); // Print os name and version (DeepOS v.MAJOR.MINOR.MORE_MINOR)
+    std.nl(); // New line
+    std.out(fs.readFile('/sys/msg/DeepOS/boot/finish.txt'));
+  }
+  if ('DeepOS.Term' in localStorage) { // Check if a terminal is running
+    printWelcomeText();
+  } else {
+    const Terminal = new Term('div#term');
+    printWelcomeText();
+  }
 }

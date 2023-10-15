@@ -10,7 +10,7 @@ const std = {
         this.nl();
       }
     } else {
-      console.warn('Error: cannot execute system.out without running terminal [/sys/lib/sysstd.js:out]');
+      console.warn('Error: cannot execute out() without running terminal');
     }
   },
   "nl": function() { // Print a new line
@@ -18,10 +18,10 @@ const std = {
       var br = document.createElement('br'); // Initialize new line
       document.querySelector(localStorage.getItem('DeepOS.Term')).appendChild(br); // Append new line to terminal
     } else {
-      console.warn('Error: cannot execute system.nl without running terminal [/sys/lib/sysstd.js:nl]');
+      console.warn('Error: cannot execute nl() without running terminal');
     }
   },
-  "in": function(finite) { // Get user input
+  "in": function(finite, callback) { // Get user input
     if ('DeepOS.Term' in localStorage) { // Check if terminal exists
       if (!(localStorage.getItem('DeepOS.tmp.input') == 'true')) {
         var input = document.createElement('input'); // Initialize new element
@@ -33,10 +33,13 @@ const std = {
         var text = ''; // Declare text value
         document.getElementById('term-input').addEventListener('keypress', function (e) { // Detect when user finished writing input
           text = document.getElementById('term-input').value; // Get input value
-          document.activeElement.blur(); // Unfocus input
-          document.getElementById('term-input').remove(); // Remove input
-          localStorage.setItem('DeepOS.tmp.input', 'false'); // Set input state
-          console.log(text); // Return text
+          if (finite) {
+            document.activeElement.blur(); // Unfocus input
+            document.getElementById('term-input').remove(); // Remove input
+            localStorage.setItem('DeepOS.tmp.input', 'false'); // Set input state
+          }
+          localStorage.setItem('DeepOS.tmp.lastinput', text); // Return text
+          callback(text);
         });
         document.getElementById('term-input').addEventListener('blur', function() { // Detect when input unfocused
           if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if terminal exists
@@ -44,10 +47,20 @@ const std = {
           }
         });
       } else {
-        console.warn('Error: cannot execute system.in while user is alredy writing input [/sys/lib/sysstd.js:in]');
+        console.warn('Error: cannot execute in() while user is alredy writing input');
       }
     } else {
-      console.warn('Error: cannot execute system.in without running terminal [/sys/lib/sysstd.js:in]');
+      console.warn('Error: cannot execute in() without running terminal [/sys/lib/std.js:in]');
+    }
+  },
+  "getin": function() {
+    if ('DeepOS.Term' in localStorage) {
+      if ('DeepOS.tmp.lastinput' in localStorage) {
+      } else {
+        console.warn('Error: cannot execute getin() without ready input');
+      }
+    } else {
+      console.warn('Error: cannot execute getin() without running terminal');
     }
   },
   "endin": function() {
@@ -56,7 +69,14 @@ const std = {
       document.getElementById('term-input').remove(); // Remove input
       localStorage.setItem('DeepOS.tmp.input', 'false'); // Set input state
     } else {
-      console.warn('Error: cannot execute sysstd.endin without running terminal [/sys/lib/sysstd.js:endin]');
+      console.warn('Error: cannot execute endin() without running terminal');
+    }
+  },
+  "clear": function() {
+    if ('DeepOS.Term' in localStorage) {
+      document.querySelector(localStorage.getItem('DeepOS.Term')).innerHTML = '';
+    } else {
+      console.warn('Error: cannot execute clear() without running terminal');
     }
   }
 }
