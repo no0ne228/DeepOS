@@ -1,7 +1,13 @@
 // /sys/init.js
 
+/*
+ * This is actual DeepOS kernel, it creates and loades necessary functions
+ */
+
 // System functions
-function importScript(scriptName) {
+console.log('Initializing system... [/sys/init.js]');
+
+function importScript(scriptName, execOnLoad) {
   console.log("Importing " + scriptName + "...");
   // Function to load scripts
   var script = document.createElement('script'); // Create script
@@ -24,13 +30,10 @@ function importScript(scriptName) {
         scriptId += '__'; // Add '__' instead of char
       }
     }
-    script.id = scriptId; // Set script id
+    script.id = 'importScript_' + scriptId; // Set script id
     document.querySelector('head').appendChild(script); // Append script
   } else {
-    script.id = scriptName; // Set script id
+    script.id = 'importScript_' + scriptName; // Set script id
     document.querySelector('head').appendChild(script); // Append script
   }
-  console.log("Loaded " + scriptName);
 }
-
-importScript('/sys/sysout.js');
