@@ -33,5 +33,4 @@ Then navgiate to [http://0.0.0.0:3000](http://0.0.0.0:3000)
  - [Latest update](https://github.com/KolibriKing/DeepOS/new/main?readme=1#latest-update)
  - [Download and run](https://github.com/KolibriKing/DeepOS/edit/main/README.md#download-and-run)
    - [Using Github CLI](https://github.com/KolibriKing/DeepOS/edit/main/README.md#using-github-cli)
-=======
    - [Using Github CLI](https://github.com/KolibriKing/DeepOS/edit/main/README.md#using-github-cli)
