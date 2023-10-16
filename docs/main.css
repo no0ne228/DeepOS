@@ -1,0 +1,13 @@
+body {
+  background-color: #18141c;
+}
+p, span, h1 {
+  color: white;
+  font-family: sans-serif;
+}
+p.code, span.code {
+  border: 1px solid gray;
+  background-color: gray;
+  border-round: 3px;
+  font-family: Monospace;
+}
