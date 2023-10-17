@@ -26,7 +26,9 @@ Using npm `http-server`
 
 `http-server`
 
-Then navgiate to [http://0.0.0.0:3000](http://0.0.0.0:3000)
+Then navigate to [http://0.0.0.0:3000](http://0.0.0.0:3000) in a web browser
+
+Make sure your server root is where `index.html` located
 
 ## Table of contents
 [DeepOS](https://github.com/KolibriKing/DeepOS/new/main?readme=1#deepos)
