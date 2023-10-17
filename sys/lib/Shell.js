@@ -3,9 +3,11 @@ class Shell {
     importScript('sysvar');
     if (shellName == 'default') {
       importScript('/sys/shell/' + sysvar.defaultShell);
-      this.exec = function(cmd) {
-        eval(sysvar.defaultShell + '$(' + cmd + ')');// Shell main/global functions end with dollar sign $
-      }
+    } else {
+      importScript('/sys/shell/' + shellName)
     }
+  }
+  exec(cmd) {
+    eval(sysvar.defaultShell + '$(' + cmd + ')');// Shell main/global functions end with dollar sign $
   }
 }
