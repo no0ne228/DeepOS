@@ -1,0 +1,3 @@
+const sysvar = {
+  "defaultShell": "Dash"
+}
