@@ -2,9 +2,9 @@ class Shell {
   constructor(shellName) {
     importScript('sysvar');
     if (shellName == 'default') {
-      importScript('/sys/shell/' + sysvar.defaultShell);
+      importScript('/sys/shell/' + sysvar.defaultShell + '.js');
     } else {
-      importScript('/sys/shell/' + shellName)
+      importScript('/sys/shell/' + shellName + '.js');
     }
   }
   exec(cmd) {
