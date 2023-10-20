@@ -4,6 +4,8 @@ A simple os that is mostly written in JavaScript
 ## Latest update
 To make DeepOS better, old files were removed, and now developing real web OS started
 
+## 
+
 ## Download and run
 ### Using Github CLI
 Clone the repository
@@ -28,7 +30,7 @@ Using npm `http-server`
 
 Then navigate to [http://0.0.0.0:3000](http://0.0.0.0:3000) in a web browser
 
-Make sure your server root is where `index.html` located
+Make sure your server root is where `index.html` located and your browser supports EcmaScript 6
 
 ## Table of contents
 [DeepOS](https://github.com/KolibriKing/DeepOS/new/main?readme=1#deepos)
