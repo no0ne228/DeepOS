@@ -1,20 +1,14 @@
 # DeepOS
-A simple os that is mostly written in JavaScript
-
-## Latest update
-To make DeepOS better, old files were removed, and now developing real web OS started
-
-## 
+A simple OS that is mostly written in JavaScript
 
 ## Download and run
 ### Using Github CLI
 Clone the repository
 
-`gh repo clone KolibriKing/DeepOS`
-
-Navigate to DeepOS root
-
-`cd /path/to/os`
+```bash
+gh repo clone KolibriKing/DeepOS
+cd /path/to/os
+```
 
 **Start server**
 
@@ -24,17 +18,18 @@ Using python
 
 Or
 
-Using npm `http-server`
+Using npm
 
-`http-server`
+```bash
+npm i light-server -g
+light-server -s . -p 3000
+```
 
 Then navigate to [http://0.0.0.0:3000](http://0.0.0.0:3000) in a web browser
 
-Make sure your server root is where `index.html` located and your browser supports EcmaScript 6
+Make sure your server root is where `index.html` located and your browser supports EcmaScript 6, because from version Pre-0.05.2 Alpha `import` statements are being used instead of `importScript` function declared in `/sys/init.js`
 
 ## Table of contents
 [DeepOS](https://github.com/KolibriKing/DeepOS/new/main?readme=1#deepos)
- - [Latest update](https://github.com/KolibriKing/DeepOS/new/main?readme=1#latest-update)
  - [Download and run](https://github.com/KolibriKing/DeepOS/edit/main/README.md#download-and-run)
-   - [Using Github CLI](https://github.com/KolibriKing/DeepOS/edit/main/README.md#using-github-cli)
    - [Using Github CLI](https://github.com/KolibriKing/DeepOS/edit/main/README.md#using-github-cli)
