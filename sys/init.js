@@ -9,6 +9,7 @@ function importScript(scriptName, execOnLoad) {
   console.log("Importing " + scriptName + "...");
   // Function to load scripts
   var script = document.createElement('script'); // Create script
+  script.type = 'module';
   if (!(scriptName[0] == '/')) { // Check if script direction is NOT absolute
     script.src = "/sys/lib/" + scriptName + ".js"; // Get script direction
   } else {
@@ -29,9 +30,9 @@ function importScript(scriptName, execOnLoad) {
       }
     }
     script.id = 'importScript_' + scriptId; // Set script id
-    document.querySelector('head').appendChild(script); // Append script
+    document.querySelector('body').appendChild(script); // Append script
   } else {
     script.id = 'importScript_' + scriptName; // Set script id
-    document.querySelector('head').appendChild(script); // Append script
+    document.querySelector('body').appendChild(script); // Append script
   }
 }

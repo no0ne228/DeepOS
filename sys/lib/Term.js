@@ -1,17 +1,15 @@
 ///sys/lib/Term.js
 
-class Term {
-  constructor(holder) {
+export const Term = {
+  create: function(holder) {
     localStorage.setItem('DeepOS.Term', holder);
-    localStorage.setItem('DeepOS.TermObj', JSON.stringify(this));
     console.log('Initialized terminal at ' + holder);
-    console.log(this);
-  }
-  delete(term, deleteElement) {
-    if (delteElement) {
-      document.querySelector(term).remove();
+  },
+  exists: function() {
+    if ('DeepOS.Term' in localStorage) {
+      return true;
+    } else {
+      return false;
     }
-    localStorage.removeItem('DeepOS.Term');
   }
-  clear() {}
 }

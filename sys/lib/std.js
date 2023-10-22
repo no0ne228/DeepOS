@@ -1,5 +1,5 @@
 // Manipulate system input/output
-const std = {
+export const std = {
   "out": function(outText, printNewLine) { // Print text
     if ('DeepOS.Term' in localStorage) { // Check if terminal exists
       var text = document.createElement('span'); // Initialize new element

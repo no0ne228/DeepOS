@@ -1,3 +1,0 @@
-const sysvar = {
-  "defaultShell": "Dash"
-}
