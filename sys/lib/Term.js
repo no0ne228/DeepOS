@@ -2,11 +2,12 @@
 
 export const Term = {
   create: function(holder) {
-    localStorage.setItem('DeepOS.Term', holder);
+    GLOBAL_STD_TERM = 'div#term';
+    GLOBAL_STD_TERM_TEXT = `${holder}_text`;
     console.log('Initialized terminal at ' + holder);
   },
   exists: function() {
-    if ('DeepOS.Term' in localStorage) {
+    if (GLOBAL_STD_TERM != '' && GLOBAL_STD_TERM_TEXT != '') {
       return true;
     } else {
       return false;

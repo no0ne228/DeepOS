@@ -1,34 +1,31 @@
 // Manipulate system input/output
 
 export const std = {
-  "out": function(outText, printNewLine) { // Print text
-    if ('DeepOS.Term' in localStorage) { // Check if terminal exists
+  "out": function(outText) { // Print text
+    if (GLOBAL_STD_TERM_TEXT != '') { // Check if terminal exists
       var text = document.createElement('span'); // Initialize new element
       text.textContent = outText; // Change new element's text
       text.className = 'term-text'; // Change new element's class
-      document.querySelector(localStorage.getItem('DeepOS.Term')).appendChild(text); // Append element to terminal
-      if (printNewLine) {
-        this.nl();
-      }
+      document.querySelector(GLOBAL_STD_TERM_TEXT).appendChild(text); // Append element to terminal
     } else {
       console.warn('Error: cannot execute out() without running terminal');
     }
   },
   "nl": function() { // Print a new line
-    if ('DeepOS.Term' in localStorage) { // Check if terminal exists
+    if (GLOBAL_STD_TERM_TEXT != '') { // Check if terminal exists
       var br = document.createElement('br'); // Initialize new line
-      document.querySelector(localStorage.getItem('DeepOS.Term')).appendChild(br); // Append new line to terminal
+      document.querySelector(GLOBAL_STD_TERM_TEXT).appendChild(br); // Append new line to terminal
     } else {
       console.warn('Error: cannot execute nl() without running terminal');
     }
   },
   "in": function(finite, callback) { // Get user input
-    if ('DeepOS.Term' in localStorage) { // Check if terminal exists
+    if (GLOBAL_STD_TERM != '') { // Check if terminal exists
       if (!(GLOBAL_STD_INPUT) && GLOBAL_STD_INPUT_ALLOWED) {
         var input = document.createElement('input'); // Initialize new element
         input.id = 'term-input'; // Set input id
         input.type = 'text'; // Set input type
-        document.querySelector(localStorage.getItem('DeepOS.Term')).appendChild(input); // Append input
+        document.querySelector(GLOBAL_STD_TERM).appendChild(input); // Append input
         document.getElementById('term-input').focus(); // Focus input
         GLOBAL_STD_INPUT = true; // Set input state
         var text = ''; // Declare text value
@@ -70,17 +67,17 @@ export const std = {
     }
   },
   "endin": function() {
-    if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if terminal exists
+    if (GLOBAL_STD_INPUT == true) { // Check if terminal exists
       document.activeElement.blur(); // Unfocus input
       document.getElementById('term-input').remove(); // Remove input
-      localStorage.setItem('DeepOS.tmp.input', 'false'); // Set input state
+      GLOBAL_STD_INPUT = false; // Set input state
     } else {
       console.warn('Error: cannot execute endin() without running terminal');
     }
   },
   "clear": function() {
-    if ('DeepOS.Term' in localStorage) {
-      document.querySelector(localStorage.getItem('DeepOS.Term')).innerHTML = '';
+    if ('DeepOS.Term.text' in localStorage) {
+      document.querySelector(GLOBAL_STD_TERM_TEXT).innerHTML = '';
     } else {
       console.warn('Error: cannot execute clear() without running terminal');
     }

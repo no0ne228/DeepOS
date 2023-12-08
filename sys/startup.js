@@ -7,6 +7,7 @@
 import { std } from '/sys/lib/std.js';
 import { fs } from '/sys/lib/fs.js';
 import { Term } from '/sys/lib/Term.js';
+import { Dash$ } from '/sys/shell/Dash.js';
 
 if (!(Term.exists())) {
   Term.create('div#term');
@@ -19,6 +20,9 @@ fs.readFile('/sys/data/ver.txt', function(version) {
       std.out('DeepOS ' + version);
     }
     std.in(false, function(userInput) {
+      std.nl();
+      std.out(userInput);
+      Dash$(userInput);
     });
   });
 });

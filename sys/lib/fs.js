@@ -12,5 +12,15 @@ export const fs = {
     } else {
       console.warn('Incorrect callback: waited for function but got ' + typeof callback);
     }
+  },
+  "exists": function(fileUrl) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('HEAD', fileUrl, false);
+    xhr.send();
+    if (xhr.status == "404") {
+        return false;
+    } else {
+        return true;
+    }
   }
 }
