@@ -1,4 +1,5 @@
 // Manipulate system input/output
+
 export const std = {
   "out": function(outText, printNewLine) { // Print text
     if ('DeepOS.Term' in localStorage) { // Check if terminal exists
@@ -23,23 +24,28 @@ export const std = {
   },
   "in": function(finite, callback) { // Get user input
     if ('DeepOS.Term' in localStorage) { // Check if terminal exists
-      if (!(localStorage.getItem('DeepOS.tmp.input') == 'true')) {
+      if (!(GLOBAL_STD_INPUT) && GLOBAL_STD_INPUT_ALLOWED) {
         var input = document.createElement('input'); // Initialize new element
         input.id = 'term-input'; // Set input id
         input.type = 'text'; // Set input type
         document.querySelector(localStorage.getItem('DeepOS.Term')).appendChild(input); // Append input
         document.getElementById('term-input').focus(); // Focus input
-        localStorage.setItem('DeepOS.tmp.input', 'true'); // Set input state
+        GLOBAL_STD_INPUT = true; // Set input state
         var text = ''; // Declare text value
         document.getElementById('term-input').addEventListener('keypress', function (e) { // Detect when user finished writing input
-          text = document.getElementById('term-input').value; // Get input value
-          if (finite) {
-            document.activeElement.blur(); // Unfocus input
-            document.getElementById('term-input').remove(); // Remove input
-            localStorage.setItem('DeepOS.tmp.input', 'false'); // Set input state
-          }
-          localStorage.setItem('DeepOS.tmp.lastinput', text); // Return text
-          callback(text);
+          if (e.key == 'Enter') {
+            text = document.getElementById('term-input').value; // Get input value
+            if (finite) {
+              document.activeElement.blur(); // Unfocus input
+              document.getElementById('term-input').remove(); // Remove input
+              GLOBAL_STD_INPUT = false; // Set input state
+            } else {
+              //Clear input
+              document.getElementById('term-input').value = '';
+            }
+            localStorage.setItem('DeepOS.tmp.lastinput', text); // Save text
+            callback(text);
+        }
         });
         document.getElementById('term-input').addEventListener('blur', function() { // Detect when input unfocused
           if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if terminal exists
@@ -47,7 +53,7 @@ export const std = {
           }
         });
       } else {
-        console.warn('Error: cannot execute in() while user is alredy writing input');
+        console.warn('Error: cannot execute in() because user is already writing input or input is not allowed');
       }
     } else {
       console.warn('Error: cannot execute in() without running terminal [/sys/lib/std.js:in]');
