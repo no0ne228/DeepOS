@@ -19,6 +19,11 @@ fs.readFile('/sys/data/ver.txt', function(version) {
     } else {
       std.out('DeepOS ' + version);
     }
+    fs.readFile('/sys/msg/DeepOS/boot/finish.txt', function(welcomeMsg) {
+      std.nl();
+      std.out(welcomeMsg);
+    });
+    console.log('Launching input loop');
     std.in(false, function(userInput) {
       std.nl();
       std.out(userInput);

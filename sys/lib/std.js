@@ -22,6 +22,7 @@ export const std = {
   "in": function(finite, callback) { // Get user input
     if (GLOBAL_STD_TERM != '') { // Check if terminal exists
       if (!(GLOBAL_STD_INPUT) && GLOBAL_STD_INPUT_ALLOWED) {
+        console.log('Launched input');
         var input = document.createElement('input'); // Initialize new element
         input.id = 'term-input'; // Set input id
         input.type = 'text'; // Set input type
