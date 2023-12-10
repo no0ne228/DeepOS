@@ -7,7 +7,9 @@ body {
 .term-text {
   color: white;
   font-family: Monospace;
-  font-size: 14px;
+  font-size: 13px;
+  margin: 0px;
+  padding: 0px;
 }
 #term-input {
   color: white;
@@ -15,7 +17,7 @@ body {
   outline: none;
   border: none;
   background-color: #000000;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
+  font-size: 13px;
+  margin: 0px;
+  padding: 0px;
 }
