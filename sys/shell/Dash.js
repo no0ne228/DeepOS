@@ -13,6 +13,7 @@ export function Dash$(raw_cmd) {
   if (fs.exists(`/bin/${cmd}.js`)) {
     if (document.getElementById(`Dash_${cmd}`) == null) {
       var script = document.createElement('script');
+<<<<<<< HEAD
       script.src = `/bin/${cmd}.js`;
       script.id = `Dash_${cmd}`;
       script.type = 'module';
@@ -28,11 +29,21 @@ export function Dash$(raw_cmd) {
            argv: cargv
          })`);
          console.log('Success');
+=======
+      script.src = `/bin/${raw_cmd}.js`;
+      script.id = `Dash_${raw_cmd}`;
+      script.type = 'module';
+      document.body.appendChild(script);
+      document.getElementById(script.id).onload = function() {
+        if (eval(`Dash$_${raw_cmd}`) != undefined) {
+         eval(`Dash$_${raw_cmd}()`);
+>>>>>>> f38c54f0fbea0f0abae5bf21e521b4e284a4bb9a
         } else {
           std.out(`Dash: ${cmd}: command is incorrect`);
         }
       }
     } else {
+<<<<<<< HEAD
       if (eval(`Dash$_${cmd}`) != undefined) {
         console.log('Running ' + cmd);
         console.log(cargv);
@@ -43,6 +54,10 @@ export function Dash$(raw_cmd) {
           argv: cargv
         });`);
         console.log('Success');
+=======
+     if (eval(`Dash$_${raw_cmd}`) !== undefined) {
+       eval(`Dash$_${raw_cmd}();`);
+>>>>>>> f38c54f0fbea0f0abae5bf21e521b4e284a4bb9a
       } else {
         std.out(`Dash: ${cmd}: command is incorrect`);
       }
