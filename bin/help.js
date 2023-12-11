@@ -8,10 +8,11 @@ window.Dash$_help = function(data) {
     std.nl();
     std.out('printf [...]');
   } else {
-    fs.readFile(`/usr/msg/Dash/help/${data.argv[0]}.json`, function(msg) {
+    console.log(`Reading /usr/msg/Dash/help/${data.argv[0]}.msg`);
+    fs.readFile(`/usr/msg/Dash/help/${data.argv[0]}.msg`, function(msg) {
       let pmsg = JSON.parse(msg);
-      for (string of msg.lines) {
-        if (string === '/nl') {
+      for (let string of pmsg) {
+        if (string == '/nl') {
           std.nl();
         } else {
           std.out(string);
