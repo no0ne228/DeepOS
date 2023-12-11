@@ -27,7 +27,7 @@ export function Dash$(raw_cmd) {
            fargv: args,
            argv: cargv
          })`);
-         console.log('Success');
+         console.log('Dash: command finished');
         } else {
           std.out(`Dash: ${cmd}: command is incorrect`);
         }
@@ -42,7 +42,7 @@ export function Dash$(raw_cmd) {
           fargv: args,
           argv: cargv
         });`);
-        console.log('Success');
+        console.log('Dash: command finished');
       } else {
         std.out(`Dash: ${cmd}: command is incorrect`);
       }
