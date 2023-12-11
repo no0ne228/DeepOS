@@ -77,7 +77,7 @@ export const std = {
     }
   },
   "clear": function() {
-    if ('DeepOS.Term.text' in localStorage) {
+    if (GLOBAL_STD_TERM_TEXT) {
       document.querySelector(GLOBAL_STD_TERM_TEXT).innerHTML = '';
     } else {
       console.warn('Error: cannot execute clear() without running terminal');
