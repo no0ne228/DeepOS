@@ -4,7 +4,7 @@ import { fs } from '/sys/lib/fs.js';
 window.Dash$_help = function(data) {
   if (typeof data.argv[0] == 'undefined') {
     std.nl();
-    std.out('help [no options]');
+    std.out('help [command]');
     std.nl();
     std.out('printf [...]');
   } else {
