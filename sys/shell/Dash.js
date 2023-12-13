@@ -48,7 +48,27 @@ export function Dash$(raw_cmd) {
       }
     }
   } else {
-    std.nl();
-    std.out(`Dash: ${cmd}: command not found`);
+    let pkgs = JSON.parse(localStorage.getItem('DeepOS.pkg'));
+    let pkg_exists = false;
+    let pkg_num = 0;
+    for (let obj of pkgs) {
+      if (obj.name == cmd) {
+        pkg_exists = true;
+        break;
+      }
+      pkg_num++;
+    }
+    if (pkg_exists) {
+      if (document.getElementById(`pkg_${cmd}`) == null) {
+        var script = document.createElement('script');
+        script.textContent = pkgs[pkg_num].code;
+        script.id = `pkg_${cmd}`;
+        script.type = 'module';
+        document.body.appendChild(script);
+      }
+    } else {
+      std.nl();
+      std.out(`Dash: ${cmd}: command not found`);
+    }
   }
 }
