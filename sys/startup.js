@@ -20,8 +20,13 @@ fs.readFile('/sys/data/ver.txt', function(version) {
   });
   console.log('Launching input loop');
   std.in(false, function(userInput) {
-    std.nl();
-    std.out(userInput);
-    Dash$(userInput);
+    fs.readFile('/usr/term/prompt.txt', function(prompt) {
+      std.nl();
+      console.log('debug: userInput is ' + userInput);
+      console.log('debug: prompt is ' + prompt);
+      std.out(prompt);
+      std.out(userInput);
+      Dash$(userInput);
+    });
   });
 });
