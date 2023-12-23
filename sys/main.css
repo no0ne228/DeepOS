@@ -20,4 +20,20 @@ body {
   font-size: 13px;
   margin: 0px;
   padding: 0px;
+  width: auto;
+}
+#term_prompt {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+}
+#term_text {
+  display: inline;
+}
+hr {
+  color: #000000;
+  background-color: #000000;
+  border: none;
+  margin: 0px;
+  padding: 0px;
 }

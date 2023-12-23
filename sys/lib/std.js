@@ -13,7 +13,7 @@ export const std = {
   },
   "nl": function() { // Print a new line
     if (GLOBAL_STD_TERM_TEXT != '') { // Check if terminal exists
-      var br = document.createElement('br'); // Initialize new line
+      var br = document.createElement('hr'); // Initialize new line
       document.querySelector(GLOBAL_STD_TERM_TEXT).appendChild(br); // Append new line to terminal
     } else {
       console.warn('Error: cannot execute nl() without running terminal');
@@ -26,11 +26,13 @@ export const std = {
         var input = document.createElement('input'); // Initialize new element
         input.id = 'term-input'; // Set input id
         input.type = 'text'; // Set input type
+        //input.contentEditable = true;
         document.querySelector(GLOBAL_STD_TERM).appendChild(input); // Append input
         document.getElementById('term-input').focus(); // Focus input
         GLOBAL_STD_INPUT = true; // Set input state
         var text = ''; // Declare text value
         document.getElementById('term-input').addEventListener('keypress', function (e) { // Detect when user finished writing input
+          console.log('debug: key pressed is s' + e.key);
           if (e.key == 'Enter') {
             text = document.getElementById('term-input').value; // Get input value
             if (finite) {
@@ -43,12 +45,23 @@ export const std = {
             }
             localStorage.setItem('DeepOS.tmp.lastinput', text); // Save text
             callback(text);
-        }
+          } else {
+            this.style.width = this.value.length;
+            console.log('debug: set input size to ' + this.value.length);
+          }
         });
         document.getElementById('term-input').addEventListener('blur', function() { // Detect when input unfocused
           if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if terminal exists
             document.getElementById('term-input').focus(); // Focus on input
           }
+        });
+        document.getElementById('term-input').addEventListener('input', function(e) {
+          let lastChar = this.value.length;
+          console.log('debug: last character index is ' + lastChar);
+          console.log('debug: last key is ' + this.value[lastChar - 1]);
+          this.style.width = (lastChar * 7.5) + 'px';
+          // Info: 7.5 is 13 / 2, font-size is 13 for all text
+          console.log('debug: input style.width is now ' + this.style.width);
         });
       } else {
         console.warn('Error: cannot execute in() because user is already writing input or input is not allowed');

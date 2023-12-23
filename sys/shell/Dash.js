@@ -71,4 +71,5 @@ export function Dash$(raw_cmd) {
       std.out(`Dash: ${cmd}: command not found`);
     }
   }
+  std.nl();
 }

@@ -18,10 +18,10 @@ fs.readFile('/sys/data/ver.txt', function(version) {
     std.nl();
     std.out(welcomeMsg);
   });
+  std.nl();
   console.log('Launching input loop');
   std.in(false, function(userInput) {
     fs.readFile('/usr/term/prompt.txt', function(prompt) {
-      std.nl();
       console.log('debug: userInput is ' + userInput);
       console.log('debug: prompt is ' + prompt);
       std.out(prompt);
