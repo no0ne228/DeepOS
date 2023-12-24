@@ -59,8 +59,7 @@ export const std = {
           let lastChar = this.value.length;
           console.log('debug: last character index is ' + lastChar);
           console.log('debug: last key is ' + this.value[lastChar - 1]);
-          this.style.width = (lastChar * 7.5) + 'px';
-          // Info: 7.5 is 13 / 2, font-size is 13 for all text
+          this.style.width = (lastChar * 7.8) + 'px';
           console.log('debug: input style.width is now ' + this.style.width);
         });
       } else {
