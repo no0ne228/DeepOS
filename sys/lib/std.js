@@ -32,7 +32,6 @@ export const std = {
         GLOBAL_STD_INPUT = true; // Set input state
         var text = ''; // Declare text value
         document.getElementById('term-input').addEventListener('keypress', function (e) { // Detect when user finished writing input
-          console.log('debug: key pressed is s' + e.key);
           if (e.key == 'Enter') {
             text = document.getElementById('term-input').value; // Get input value
             if (finite) {
@@ -45,9 +44,6 @@ export const std = {
             }
             localStorage.setItem('DeepOS.tmp.lastinput', text); // Save text
             callback(text);
-          } else {
-            this.style.width = this.value.length;
-            console.log('debug: set input size to ' + this.value.length);
           }
         });
         document.getElementById('term-input').addEventListener('blur', function() { // Detect when input unfocused
@@ -57,8 +53,6 @@ export const std = {
         });
         document.getElementById('term-input').addEventListener('input', function(e) {
           let lastChar = this.value.length;
-          console.log('debug: last character index is ' + lastChar);
-          console.log('debug: last key is ' + this.value[lastChar - 1]);
           this.style.width = (lastChar * 7.8) + 'px';
           console.log('debug: input style.width is now ' + this.style.width);
         });
