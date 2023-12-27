@@ -27,6 +27,8 @@ light-server -s . -p 3000
 
 Then navigate to [http://0.0.0.0:3000](http://0.0.0.0:3000) in a web browser
 
+**Note: it's recommended to use method via `npm` for development**
+
 Make sure your server root is where `index.html` located and your browser supports EcmaScript 6, because from version Pre-0.05.2 Alpha `import` statements are being used instead of `importScript` function declared in `/sys/init.js`
 
 ## Table of contents
