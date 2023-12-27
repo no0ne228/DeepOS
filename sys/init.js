@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 // /sys/init.js
 
 // This is actual DeepOS kernel, it creates and loades necessary functions

@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 import { std } from "/sys/lib/std.js"
 
 window.Dash$_printf = function(data) {

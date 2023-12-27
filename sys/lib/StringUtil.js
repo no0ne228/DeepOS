@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 export function String$ToSpace(string) {
   let result = '';
   for (char of string) {

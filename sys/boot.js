@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 ///sys/boot.js
 
 // This DeepOS boot

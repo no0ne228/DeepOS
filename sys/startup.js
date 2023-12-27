@@ -1,4 +1,6 @@
 /*
+ * Copyright 2023 KolibriKing
+ *
  * /sys/startup.js
  *
  * This is executed when everything is loaded (when body loaded)(this script is executed from /sys/boot.js)

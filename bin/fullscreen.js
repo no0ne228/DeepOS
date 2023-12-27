@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 window.Dash$_fullscreen = function(args) {
   console.log('debug: entering fullscreen');
   if (!document.fullscreenElement) {

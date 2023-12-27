@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 export const fs = {
   "readFile": function(fileUrl, callback) {
     if (typeof callback == 'function') {

@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 import { std } from '/sys/lib/std.js';
 import { fs } from '/sys/lib/fs.js';
 

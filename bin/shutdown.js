@@ -1,5 +1,5 @@
 /*
- * Author: KolibriKing <kolibriking12@gmail.com>
+ * Copyright 2023 KolibriKing
  */
 
 import { std } from '/sys/lib/std.js';

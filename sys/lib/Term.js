@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 ///sys/lib/Term.js
 
 export const Term = {

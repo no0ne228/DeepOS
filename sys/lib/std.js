@@ -1,3 +1,7 @@
+/*
+ * Copyright 2023 KolibriKing
+ */
+
 // Manipulate system input/output
 
 export const std = {
