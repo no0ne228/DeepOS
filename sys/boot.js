@@ -25,7 +25,9 @@ if (!('DeepOS.pkg' in localStorage)) {
 
 // Setup elements
 document.querySelector('div#term').addEventListener('click', function(e) {
-  document.querySelector('input#term-input').focus();
+  if (GLOBAL_STD_INPUT) {
+    document.querySelector('input#term-input').focus();
+  }
 });
 
 document.body.onload = function() {
