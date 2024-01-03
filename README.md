@@ -1,5 +1,5 @@
 # DeepOS
-A simple OS that is mostly written in JavaScript
+A simple javascript OS
 
 ## Download and run
 ### Using Github CLI
