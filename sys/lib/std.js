@@ -58,7 +58,6 @@ export const std = {
         document.getElementById('term-input').addEventListener('input', function(e) {
           let lastChar = this.value.length;
           this.style.width = (lastChar * 7.8) + 'px';
-          console.log('debug: input style.width is now ' + this.style.width);
         });
       } else {
         console.warn('Error: cannot execute in() because user is already writing input or input is not allowed');
