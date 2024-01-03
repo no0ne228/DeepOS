@@ -14,9 +14,15 @@ window.Dash$_sysinfo = function(args) {
       // Print user agent
       std.out(window.navigator.userAgent);
       break;
+    case '-v':
+      fs.readFile('/sys/data/ver.txt', function(version) {
+        std.out('DeepOS' + version);
+      });
+      break;
     default:
       fs.readFile('/sys/data/ver.txt', function(version) {
         std.out(`DeepOS ${version} ${window.navigator.userAgent}`);
       });
+      break;
   }
 }
