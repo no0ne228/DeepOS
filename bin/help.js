@@ -17,4 +17,11 @@ window.Dash$_help = function(args) {
   std.out('shutdown [-f]');
   std.nl();
   std.out('pkg [... ...]');
+  std.nl();
+  std.out('fullscreen [...]');
+  std.nl();
+  std.out('mkdir [... ...]');
+  std.nl();
+  std.out('sysinfo [-a, -v]');
+  std.nl();
 }
