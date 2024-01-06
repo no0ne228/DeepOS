@@ -19,7 +19,9 @@ window.GLOBAL_STD_INPUT_ALLOWED = true;
 window.GLOBAL_STD_TERM = '';
 // terminal text location
 window.GLOBAL_STD_TERM_TEXT = '';
-
+// vfs
+// latest return status
+window.GLOBAL_VFS_TMPSTATUS = -1;
 
 // Storage
 // Packages

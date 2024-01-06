@@ -40,3 +40,12 @@ export function String$ToSpaceArray(string) {
   }
   return result;
 }
+export function String$countChar(cchar, string) {
+  let result = 0;
+  for (let char of string) {
+    if (char == cchar) {
+      result++;
+    }
+  }
+  return result;
+}
