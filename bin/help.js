@@ -24,4 +24,6 @@ window.Dash$_help = function(args) {
   stdio.nl();
   stdio.out('sysinfo [-a, -v]');
   stdio.nl();
+  stdio.out('dc [...]');
+  stdio.nl();
 }
