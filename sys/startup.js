@@ -19,8 +19,8 @@ fs.readFile('/sys/data/ver.txt', function(version) {
   fs.readFile('/sys/msg/DeepOS/boot/finish.txt', function(welcomeMsg) {
     stdio.nl();
     stdio.out(welcomeMsg);
+    stdio.nl();
   });
-  stdio.nl();
   console.log('Launching input loop');
   stdio.in(false, function(userInput) {
       fs.readFile('/usr/term/prompt.txt', function(prompt) {
