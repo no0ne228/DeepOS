@@ -1,12 +1,12 @@
 /*
- * Copyright 2023 KolibriKing
+ * Copyright 2024 KolibriKing
  */
 
 ///sys/boot.js
 
 // This DeepOS boot
 
-// Variables
+// Environment variables
 // Boot
 // status
 window.GLOBAL_BOOT_STATUS = 'DEFAULT_TERM';

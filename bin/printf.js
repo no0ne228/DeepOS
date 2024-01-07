@@ -1,14 +1,14 @@
 /*
- * Copyright 2023 KolibriKing
+ * Copyright 2024 KolibriKing
  */
 
-import { std } from "/sys/lib/std.js"
+import { stdio } from "/sys/lib/stdio.js"
 
 window.Dash$_printf = function(data) {
   if (data.argv[0] == '-n') {
-    std.nl();
-    std.out(data.argv[1]);
+    stdio.nl();
+    stdio.out(data.argv[1]);
   } else {
-    std.out(data.argv[0])
+    stdio.out(data.argv[0])
   }
 }

@@ -1,8 +1,8 @@
 /*
- * Copyright 2023 KolibriKing
+ * Copyright 2024 KolibriKing
  */
 
-import { std } from '/sys/lib/std.js';
+import { stdio } from '/sys/lib/stdio.js';
 
 window.Dash$_shutdown = function(args) {
   switch (args.argv[0]) {
@@ -25,7 +25,7 @@ window.Dash$_shutdown = function(args) {
           document.querySelector('div#graphics').remove();
           break;
         default:
-          std.out('shutdown: GLOBAL_BOOT_STATUS variable is incorrect, please check the variable and try again');
+          stdio.out('shutdown: GLOBAL_BOOT_STATUS environment variable is incorrect, please check the variable and try again');
       }
       break;
   }

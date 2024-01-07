@@ -1,27 +1,27 @@
 /*
- * Copyright 2023 KolibriKing
+ * Copyright 2024 KolibriKing
  */
 
-import { std } from '/sys/lib/std.js';
+import { stdio } from '/sys/lib/stdio.js';
 import { fs } from '/sys/lib/fs.js';
 
 window.Dash$_help = function(args) {
   // Print avaliable commands
-  std.nl();
-  std.out('help [...]');
-  std.nl();
-  std.out('printf [-n]');
-  std.nl();
-  std.out('clear []');
-  std.nl();
-  std.out('shutdown [-f]');
-  std.nl();
-  std.out('pkg [... ...]');
-  std.nl();
-  std.out('fullscreen [...]');
-  std.nl();
-  std.out('mkdir [... ...]');
-  std.nl();
-  std.out('sysinfo [-a, -v]');
-  std.nl();
+  stdio.nl();
+  stdio.out('help [...]');
+  stdio.nl();
+  stdio.out('printf [-n]');
+  stdio.nl();
+  stdio.out('clear []');
+  stdio.nl();
+  stdio.out('shutdown [-f]');
+  stdio.nl();
+  stdio.out('pkg [... ...]');
+  stdio.nl();
+  stdio.out('fullscreen [...]');
+  stdio.nl();
+  stdio.out('mkdir [... ...]');
+  stdio.nl();
+  stdio.out('sysinfo [-a, -v]');
+  stdio.nl();
 }

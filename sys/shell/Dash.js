@@ -1,8 +1,8 @@
 /*
- * Copyright 2023 KolibriKing
+ * Copyright 2024 KolibriKing
  */
 
-import { std } from '/sys/lib/std.js';
+import { stdio } from '/sys/lib/stdio.js';
 import { fs } from '/sys/lib/fs.js';
 import { String$ToSpace, String$FromPos, String$ToSpaceArray } from '/sys/lib/StringUtil.js';
 
@@ -33,7 +33,7 @@ export function Dash$(raw_cmd) {
          })`);
          console.log('Dash: command finished');
         } else {
-          std.out(`Dash: ${cmd}: command is incorrect`);
+          stdio.out(`Dash: ${cmd}: command is incorrect`);
         }
       }
     } else {
@@ -48,7 +48,7 @@ export function Dash$(raw_cmd) {
         });`);
         console.log('Dash: command finished');
       } else {
-        std.out(`Dash: ${cmd}: command is incorrect`);
+        stdio.out(`Dash: ${cmd}: command is incorrect`);
       }
     }
   } else {
@@ -71,9 +71,9 @@ export function Dash$(raw_cmd) {
         document.body.appendChild(script);
       }
     } else {
-      std.nl();
-      std.out(`Dash: ${cmd}: command not found`);
+      stdio.nl();
+      stdio.out(`Dash: ${cmd}: command not found`);
     }
   }
-  std.nl();
+  stdio.nl();
 }

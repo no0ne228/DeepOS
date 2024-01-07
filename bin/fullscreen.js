@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 KolibriKing
+ * Copyright 2024 KolibriKing
  */
 
 window.Dash$_fullscreen = function(args) {

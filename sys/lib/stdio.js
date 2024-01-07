@@ -4,7 +4,7 @@
 
 // Manipulate system input/output
 
-export const std = {
+export const stdio = {
   "out": function(outText) { // Print text
     if (GLOBAL_STD_TERM_TEXT != '') { // Check if terminal exists
       var text = document.createElement('span'); // Initialize new element
