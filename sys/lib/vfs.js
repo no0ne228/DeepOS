@@ -10,7 +10,7 @@ function vfs$checkRoot() {
     if (!(`${prefix}:/` in localStorage)) {
       localStorage.setItem(`${prefix}:/`, JSON.stringify({
         "type": "dir",
-        "parent": "/",
+        "parent": "root",
         "rights": ["R", "W"]
       }));
     }
@@ -33,7 +33,9 @@ export function vfs$mkdir(dest, dir, callback) {
                 localStorage.setItem(`${prefix}:${dest}/${dir}`, JSON.stringify({
                   "type": "dir",
                   "parent": dest,
-                  "rights": ["R", "W", "D"]
+                  "rights": ["R", "W", "D"],
+                  "name": `${dest}/${dir}`,
+                  "sname": dir
                 })); // Create directory object in localStorage
                 GLOBAL_VFS_TMPSTATUS = 0; // Status: done
                 callback(0);
@@ -46,7 +48,9 @@ export function vfs$mkdir(dest, dir, callback) {
                 localStorage.setItem(`${prefix}:/${dir}`, JSON.stringify({
                   "type": "dir",
                   "parent": dest,
-                  "rights": ["R", "W", "D"]
+                  "rights": ["R", "W", "D"],
+                  "name": '/' + dir,
+                  "sname": dir
                 })); // Create directory object in localStorage
                 GLOBAL_VFS_TMPSTATUS = 0; // Status: done
                 callback(0);
@@ -70,6 +74,35 @@ export function vfs$mkdir(dest, dir, callback) {
     } else {
       GLOBAL_VFS_TMPSTATUS = 1; // Error: destination directory not found
       callback(1);
+    }
+  });
+}
+/*List all sub-directories and files in a directory*/
+export function vfs$list(dir, callback) {
+  fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
+    let result = [];
+    if (`${prefix}:${dir}` in localStorage) {
+      let dir$ = JSON.parse(localStorage.getItem(`${prefix}:${dir}`));
+      if (dir$.type == 'dir') {
+        for (let i in localStorage) {
+          let item = localStorage[i];
+          if (item[0] == '{') {
+            let parsed = JSON.parse(item);
+            console.log('debug: checking item: ' + item + ', type is ' + typeof parsed);
+            if (typeof parsed == 'object') {
+              if (parsed.parent == dir) {
+                if (parsed.parent != 'root') {
+                  result.push(parsed.name);
+                  console.log('debug: item logged');
+                }
+              }
+            }
+          }
+        }
+        callback(0, result);
+      } else {
+        callback(2, []);
+      }
     }
   });
 }
