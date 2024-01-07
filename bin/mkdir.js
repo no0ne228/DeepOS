@@ -11,6 +11,8 @@ window.Dash$_mkdir = function(args) {
   vfs$mkdir(argv[0], argv[1], function(status) {
     console.log('debug: mkdir status code is ' + status);
     switch (status) {
+      case 0:
+        break;
       case 1:
         stdio.out('mkdir: ' + argv[0] + ': directory not found');
         break;
