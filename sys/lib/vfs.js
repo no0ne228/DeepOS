@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 KolibriKing
+ * Copyright 2024 KolibriKing
  */
 
 import { fs } from '/sys/lib/fs.js';
