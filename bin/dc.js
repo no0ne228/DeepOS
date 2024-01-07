@@ -3,14 +3,15 @@
  */
 
 import { stdio } from '/sys/lib/stdio.js';
-import { vfs$list } from '/sys/lib/vfs.js';
+import { vfs$list, vfs$get } from '/sys/lib/vfs.js';
 
 window.Dash$_dc = function(args) {
   vfs$list(args.argv[0], function(status, list) {
     for (let dir of list) {
-      stdio.nl();
-      stdio.out(dir);
+      vfs$get(dir, function(item) {
+        stdio.out(item.sname);
+        stdio.nl();
+      });
     }
-    stdio.nl();
   });
 }
