@@ -46,4 +46,5 @@ window.Dash$_pkg = function(args) {
       std.out(args.argv[0] + ' is not a package command. See pkg --help for avaliable commands');
       break;
   }
+  std.nl();
 }
