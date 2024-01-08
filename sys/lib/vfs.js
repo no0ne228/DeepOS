@@ -89,15 +89,17 @@ export function vfs$list(dir, callback) {
             let parsed = JSON.parse(item);
             console.log('debug: checking item: ' + item + ', type is ' + typeof parsed);
             if (typeof parsed == 'object') {
-              if (parsed.parent == dir) {
-                if (parsed.parent != 'root') {
-                  result.push(parsed.name);
-                  console.log('debug: item logged');
-                }
+              if (parsed.parent == dir && parsed.parent != 'root') {
+                result.push(parsed.name);
+                console.log('debug: item logged');
+              } else {
+                console.log('debug: item not logged');
               }
             }
           }
         }
+        
+        console.log('debug: vfs$list: list is ' + result);
         callback(0, result);
       } else {
         callback(2, []); // Error: given path is not a directory
@@ -124,8 +126,15 @@ export function vfs$rmdir(dir, callback) {
       vfs$get(dir, function(dir$) {
         if (dir$.type == 'dir') {
           if (dir$.rights.includes('D')) {
-            localStorage.removeItem(`${prefix}:${dir}`);
-            callback(0);
+            vfs$list(dir, function(status, list) {
+              console.log('debug: vfs$rmdir: list is ' + JSON.stringify(list));
+              if (JSON.stringify(list) == '[]') {
+                localStorage.removeItem(`${prefix}:${dir}`);
+                callback(0);
+              } else {
+                callback(6); // Error: directory is not empty
+              }
+            });
           } else {
             callback(3); // Error: permission denied
           }

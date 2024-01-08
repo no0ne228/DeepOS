@@ -18,9 +18,13 @@ window.Dash$_ddir = function(args) {
         stdio.nl();
         break;
       case 3:
-          stdio.out('ddir: ' + args.argv[0] + ': permission denied');
-          stdio.nl();
-          break;
+        stdio.out('ddir: ' + args.argv[0] + ': permission denied');
+        stdio.nl();
+        break;
+      case 6:
+        stdio.out('ddir: ' + args.argv[0] + ': directory not empty');
+        stdio.nl();
+        break;
     }
   });
 }

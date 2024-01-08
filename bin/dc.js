@@ -17,7 +17,7 @@ window.Dash$_dc = function(args) {
         }
         break;
       case 1:
-        stdio.out('dc: ' + args.argv[0] + ': directory not fond');
+        stdio.out('dc: ' + args.argv[0] + ': directory not fuond');
         stdio.nl();
         break;
       case 2:
