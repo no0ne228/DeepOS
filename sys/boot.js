@@ -23,6 +23,15 @@ window.GLOBAL_STD_TERM_TEXT = '';
 // latest return status
 window.GLOBAL_VFS_TMPSTATUS = -1;
 
+// user
+// user name
+window.GLOBAL_USER_NAME = 'user';
+// user ip
+fetch('https://www.cloudflare.com/cdn-cgi/trace').then(res => res.text()).then(data => {
+  let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
+  window.GLOBAL_USER_IP = data.match(ipRegex)[0];
+});
+
 // Storage
 // Packages
 if (!('DeepOS.pkg' in localStorage)) {
