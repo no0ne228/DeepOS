@@ -16,14 +16,14 @@ window.Dash$_dc = function(args) {
           });
         }
         break;
-        case 1:
-          stdio.out('dc: ' + args.argv[0] + ': directory not fond');
-          stdio.nl();
-          break;
+      case 1:
+        stdio.out('dc: ' + args.argv[0] + ': directory not fond');
+        stdio.nl();
+        break;
       case 2:
         stdio.out('dc: ' + args.argv[0] + ': not a directory');
         stdio.nl();
-        break;
+        dcbreak;
       }
   });
 }
