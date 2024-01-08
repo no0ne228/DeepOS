@@ -110,6 +110,8 @@ export function vfs$get(item, callback) {
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     if (`${prefix}:${item}` in localStorage) {
       callback(JSON.parse(localStorage.getItem(`${prefix}:${item}`)));
+    } else {
+      callback(1);
     }
   });
 }
