@@ -16,7 +16,6 @@ function vfs$checkRoot() {
     }
   });
 }
-
 /* Create a directory in a virtual filesystem */
 export function vfs$mkdir(dest, dir, callback) {
   vfs$checkRoot(); // Check root in virtual filesystem
@@ -64,7 +63,7 @@ export function vfs$mkdir(dest, dir, callback) {
             callback(4);
           }
         } else {
-          GLOBAL_VFS_TMPSTATUS = 3; // Error: write permission denied
+          GLOBAL_VFS_TMPSTATUS = 3; // Error: permission denied
           callback(3);
         }
       } else {
@@ -101,7 +100,7 @@ export function vfs$list(dir, callback) {
         }
         callback(0, result);
       } else {
-        callback(2, []);
+        callback(2, []); // Error: given path is not a directory
       }
     }
   });
@@ -111,6 +110,21 @@ export function vfs$get(item, callback) {
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     if (`${prefix}:${item}` in localStorage) {
       callback(JSON.parse(localStorage.getItem(`${prefix}:${item}`)));
+    }
+  });
+}
+/* Remove a directory */
+export function vfs$rmdir(dir, callback) {
+  fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
+    if (`${prefix}:${dir}` in localStorage) {
+      vfs$get(dir, function(dir$) {
+        if (dir$.type == 'dir') {
+          if (dir$.rights.includes('D')) {
+            localStorage.removeItem(`${prefix}:${dir}`);
+            callback(0);
+          }
+        }
+      });
     }
   });
 }
