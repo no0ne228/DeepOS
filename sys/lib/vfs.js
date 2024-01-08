@@ -102,6 +102,8 @@ export function vfs$list(dir, callback) {
       } else {
         callback(2, []); // Error: given path is not a directory
       }
+    } else {
+      callback(1); // Error: directory not found
     }
   });
 }
@@ -111,7 +113,7 @@ export function vfs$get(item, callback) {
     if (`${prefix}:${item}` in localStorage) {
       callback(JSON.parse(localStorage.getItem(`${prefix}:${item}`)));
     } else {
-      callback(1);
+      callback(1); // Error: item not found
     }
   });
 }
@@ -124,9 +126,15 @@ export function vfs$rmdir(dir, callback) {
           if (dir$.rights.includes('D')) {
             localStorage.removeItem(`${prefix}:${dir}`);
             callback(0);
+          } else {
+            callback(3); // Error: permission denied
           }
+        } else {
+          callback(2); // Error: given path is not a directory
         }
       });
+    } else {
+      callback(1); // Error: item not found
     }
   });
 }
