@@ -91,5 +91,18 @@ export const stdio = {
     } else {
       console.warn('Error: cannot execute clear() without running terminal');
     }
+  },
+  "fout": function(text, format) {
+    /**fout means formatted output, for example if format is 'b'
+     * then the text will be bold
+     */
+    if (GLOBAL_STD_TERM_TEXT != '') { // Check if terminal exists
+      var text = document.createElement('span'); // Initialize new element
+      text.innerHTML = '<' + format + '>' + outText + '</' + format + '>'; // Change new element's text
+      text.className = 'term-text'; // Change new element's class
+      document.querySelector(GLOBAL_STD_TERM_TEXT).appendChild(text); // Append element to terminal
+    } else {
+      console.warn('Error: cannot execute out() without running terminal');
+    }
   }
 }
