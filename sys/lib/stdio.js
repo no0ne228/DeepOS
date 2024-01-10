@@ -92,7 +92,7 @@ export const stdio = {
       console.warn('Error: cannot execute clear() without running terminal');
     }
   },
-  "fout": function(text, format) {
+  "fout": function(outText, format) {
     /**fout means formatted output, for example if format is 'b'
      * then the text will be bold
      */
