@@ -11,7 +11,11 @@ window.Dash$_dc = function(args) {
       case 0:
         for (let dir of list) {
           vfs$get(dir, function(item) {
-            stdio.out(item.sname);
+            if (item.type == 'dir') {
+              stdio.fout(item.sname, 'b');
+            } else {
+              stdio.out(item.sname);
+            }
             stdio.nl();
           });
         }
