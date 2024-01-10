@@ -22,6 +22,8 @@ window.Dash$_help = function(args) {
   stdio.nl();
   stdio.out('mkdir [... ...]');
   stdio.nl();
+  stdio.out('mkfile [... ...]');
+  stdio.nl();
   stdio.out('sysinfo [-a, -v]');
   stdio.nl();
   stdio.out('dc [...]');
