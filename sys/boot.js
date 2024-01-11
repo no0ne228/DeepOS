@@ -43,12 +43,18 @@ document.querySelector('div#term').addEventListener('click', function(e) {
 document.body.onload = async function() {
   // user ip
   console.log('debug: waiting for user ip...');
-  await fetch('https://www.cloudflare.com/cdn-cgi/trace').then(res => res.text()).then(data => {
-    let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
-    window.GLOBAL_USER_IP = data.match(ipRegex)[0];
-    console.log('debug: got user ip');
-
+  try {
+    await fetch('https://www.cloudflare.com/cdn-cgi/trace').then(res => res.text()).then(data => {
+      let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
+      window.GLOBAL_USER_IP = data.match(ipRegex)[0];
+      console.log('debug: got user ip');
+      importScript('/sys/startup.js');
+    });
+  } catch (e) {
+    console.warn('debug: unable to get user ip, using 127.0.0.1, stack: \n' + e.stack);
+    window.GLOBAL_USER_IP = '127.0.0.1';
     importScript('/sys/startup.js');
-  });
+
+  }
 }
 
