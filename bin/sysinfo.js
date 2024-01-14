@@ -10,23 +10,12 @@ window.Dash$_sysinfo = function(args) {
   const argv = args.argv;
   stdio.nl();
   switch (argv[0]) {
-    case '-a':
+      case '--agent', '-a':
       // Print user agent
       stdio.out(window.navigator.userAgent);
       stdio.nl();
       break;
-      case '--agent':
-      // Print user agent
-      stdio.out(window.navigator.userAgent);
-      stdio.nl();
-      break;
-    case '-v':
-      fs.readFile('/sys/data/ver.txt', function(version) {
-        stdio.out('DeepOS' + version);
-        stdio.nl();
-      });
-      break;
-    case '--version':
+    case '--version', '-v':
       fs.readFile('/sys/data/ver.txt', function(version) {
         stdio.out('DeepOS ' + version);
         stdio.nl();
