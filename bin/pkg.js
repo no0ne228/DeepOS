@@ -8,11 +8,13 @@ import { fs } from '/sys/lib/fs.js';
 window.Dash$_pkg = function(args) {
   stdio.nl();
   switch (args.argv[0]) {
-    case '--help':
-      stdio.out('pkg [option]');
+    case '--help', '-h':
+      stdio.out('pkg [args]');
       stdio.nl();
       stdio.nl();
-      stdio.out('install [link_to_js] [alias] install a package from url');
+      stdio.out('--help, -h: displays this help message');
+      stdio.nl();
+      stdio.out('install [link_to_js] [alias]: install a package from url');
       break;
     case 'install':
       let pkgs = JSON.parse(localStorage.getItem('DeepOS.pkg'));
