@@ -206,3 +206,24 @@ export function vfs$mkfile(dest, dir, callback) {
     }
   });
 }
+/* Remove a file */
+export function vfs$rmfile(dir, callback) {
+  fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
+    if (`${prefix}:${dir}` in localStorage) {
+      vfs$get(dir, function(dir$) {
+        if (dir$.type == 'file') {
+          if (dir$.rights.includes('D')) {
+            localStorage.removeItem(`${prefix}:${dir}`);
+            callback(0);
+          } else {
+            callback(3); // Error: permission denied
+          }
+        } else {
+          callback(2); // Error: given path is not a file
+        }
+      });
+    } else {
+      callback(1); // Error: item not found
+    }
+  });
+}
