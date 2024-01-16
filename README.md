@@ -1,5 +1,6 @@
 # DeepOS
 ![Static Badge](https://img.shields.io/badge/Stable-v.0.13.2-green)
+![Static Badge](https://img.shields.io/badge/License-Apache_2.0-orange)
 
 A simple javascript OS
 
