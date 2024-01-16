@@ -51,7 +51,12 @@ export const stdio = {
           }
         });
         document.getElementById('term-input').addEventListener('blur', function() { // Detect when input unfocused
-          if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if terminal exists
+          if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if user is writing input
+            document.getElementById('term-input').focus(); // Focus on input
+          }
+        });
+        document.querySelector(GLOBAL_STD_TERM).addEventListener('click', function() {
+          if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if user is writing input
             document.getElementById('term-input').focus(); // Focus on input
           }
         });
