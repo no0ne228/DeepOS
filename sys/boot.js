@@ -10,15 +10,15 @@
 // Boot
 // status
 window.GLOBAL_BOOT_STATUS = 'DEFAULT_TERM';
-// std
+// stdio
 // Input state
-window.GLOBAL_STD_INPUT = false;
+window.GLOBAL_STDIO_INPUT = false;
 // Input allowed
-window.GLOBAL_STD_INPUT_ALLOWED = true;
+window.GLOBAL_STDIO_INPUT_ALLOWED = true;
 // location
-window.GLOBAL_STD_TERM = '';
+window.GLOBAL_STDIO_TERM = '';
 // terminal text location
-window.GLOBAL_STD_TERM_TEXT = '';
+window.GLOBAL_STDIO_TERM_TEXT = '';
 // vfs
 // latest return status
 window.GLOBAL_VFS_TMPSTATUS = -1;
@@ -35,7 +35,7 @@ if (!('DeepOS.pkg' in localStorage)) {
 
 // Setup elements
 document.querySelector('div#term').addEventListener('click', function(e) {
-  if (GLOBAL_STD_INPUT) {
+  if (GLOBAL_STDIO_INPUT) {
     document.querySelector('input#term-input').focus();
   }
 });

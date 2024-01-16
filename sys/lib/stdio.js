@@ -6,34 +6,34 @@
 
 export const stdio = {
   "out": function(outText) { // Print text
-    if (GLOBAL_STD_TERM_TEXT != '') { // Check if terminal exists
+    if (GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
       var text = document.createElement('span'); // Initialize new element
       text.textContent = outText; // Change new element's text
       text.className = 'term-text'; // Change new element's class
-      document.querySelector(GLOBAL_STD_TERM_TEXT).appendChild(text); // Append element to terminal
+      document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(text); // Append element to terminal
     } else {
       console.warn('Error: cannot execute out() without running terminal');
     }
   },
   "nl": function() { // Print a new line
-    if (GLOBAL_STD_TERM_TEXT != '') { // Check if terminal exists
+    if (GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
       var br = document.createElement('hr'); // Initialize new line
-      document.querySelector(GLOBAL_STD_TERM_TEXT).appendChild(br); // Append new line to terminal
+      document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(br); // Append new line to terminal
     } else {
       console.warn('Error: cannot execute nl() without running terminal');
     }
   },
   "in": function(finite, callback) { // Get user input
-    if (GLOBAL_STD_TERM != '') { // Check if terminal exists
-      if (!(GLOBAL_STD_INPUT) && GLOBAL_STD_INPUT_ALLOWED) {
+    if (GLOBAL_STDIO_TERM != '') { // Check if terminal exists
+      if (!(GLOBAL_STDIO_INPUT) && GLOBAL_STDIO_INPUT_ALLOWED) {
         console.log('Launched input');
         var input = document.createElement('input'); // Initialize new element
         input.id = 'term-input'; // Set input id
         input.type = 'text'; // Set input type
         //input.contentEditable = true;
-        document.querySelector(GLOBAL_STD_TERM).appendChild(input); // Append input
+        document.querySelector(GLOBAL_STDIO_TERM).appendChild(input); // Append input
         document.getElementById('term-input').focus(); // Focus input
-        GLOBAL_STD_INPUT = true; // Set input state
+        GLOBAL_STDIO_INPUT = true; // Set input state
         var text = ''; // Declare text value
         document.getElementById('term-input').addEventListener('keypress', function (e) { // Detect when user finished writing input
           if (e.key == 'Enter') {
@@ -41,7 +41,7 @@ export const stdio = {
             if (finite) {
               document.activeElement.blur(); // Unfocus input
               document.getElementById('term-input').remove(); // Remove input
-              GLOBAL_STD_INPUT = false; // Set input state
+              GLOBAL_STDIO_INPUT = false; // Set input state
             } else {
               //Clear input
               document.getElementById('term-input').value = '';
@@ -55,7 +55,7 @@ export const stdio = {
             document.getElementById('term-input').focus(); // Focus on input
           }
         });
-        document.querySelector(GLOBAL_STD_TERM).addEventListener('click', function() {
+        document.querySelector(GLOBAL_STDIO_TERM).addEventListener('click', function() {
           if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if user is writing input
             document.getElementById('term-input').focus(); // Focus on input
           }
@@ -68,7 +68,7 @@ export const stdio = {
         console.warn('Error: cannot execute in() because user is already writing input or input is not allowed');
       }
     } else {
-      console.warn('Error: cannot execute in() without running terminal [/sys/lib/std.js:in]');
+      console.warn('Error: cannot execute in() without running terminal [/sys/lib/stdio.js:in]');
     }
   },
   "getin": function() {
@@ -82,17 +82,17 @@ export const stdio = {
     }
   },
   "endin": function() {
-    if (GLOBAL_STD_INPUT == true) { // Check if terminal exists
+    if (GLOBAL_STDIO_INPUT == true) { // Check if terminal exists
       document.activeElement.blur(); // Unfocus input
       document.getElementById('term-input').remove(); // Remove input
-      GLOBAL_STD_INPUT = false; // Set input state
+      GLOBAL_STDIO_INPUT = false; // Set input state
     } else {
       console.warn('Error: cannot execute endin() without running terminal');
     }
   },
   "clear": function() {
-    if (GLOBAL_STD_TERM_TEXT) {
-      document.querySelector(GLOBAL_STD_TERM_TEXT).innerHTML = '';
+    if (GLOBAL_STDIO_TERM_TEXT) {
+      document.querySelector(GLOBAL_STDIO_TERM_TEXT).innerHTML = '';
     } else {
       console.warn('Error: cannot execute clear() without running terminal');
     }
@@ -101,11 +101,11 @@ export const stdio = {
     /**fout means formatted output, for example if format is 'b'
      * then the text will be bold
      */
-    if (GLOBAL_STD_TERM_TEXT != '') { // Check if terminal exists
+    if (GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
       var text = document.createElement('span'); // Initialize new element
       text.innerHTML = '<' + format + '>' + outText + '</' + format + '>'; // Change new element's text
       text.className = 'term-text'; // Change new element's class
-      document.querySelector(GLOBAL_STD_TERM_TEXT).appendChild(text); // Append element to terminal
+      document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(text); // Append element to terminal
     } else {
       console.warn('Error: cannot execute out() without running terminal');
     }
