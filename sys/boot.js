@@ -50,8 +50,8 @@ document.body.onload = async function() {
       importScript('/sys/startup.js');
     });
   } catch (e) {
-    console.warn('debug: unable to get user ip, using 127.0.0.1, stack: \n' + e.stack);
-    window.GLOBAL_USER_IP = '127.0.0.1';
+    console.warn('debug: unable to get user ip, using localhost, stack: \n' + e.stack);
+    window.GLOBAL_USER_IP = 'localhost';
     importScript('/sys/startup.js');
 
   }
