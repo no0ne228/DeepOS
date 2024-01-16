@@ -22,6 +22,8 @@ window.GLOBAL_STDIO_TERM_TEXT = '';
 // vfs
 // latest return status
 window.GLOBAL_VFS_TMPSTATUS = -1;
+// current firectory
+window.GLOBAL_VFS_DIR = '/';
 
 // user
 // user name
