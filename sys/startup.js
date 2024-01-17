@@ -10,6 +10,7 @@ import { stdio } from '/sys/lib/stdio.js';
 import { fs } from '/sys/lib/fs.js';
 import { Term } from '/sys/lib/Term.js';
 import { Dash$ } from '/sys/shell/Dash.js';
+
 if (!(Term.exists())) {
   Term.create('div#term');
 }
@@ -25,12 +26,14 @@ fs.readFile('/sys/data/ver.txt', function(version) {
     document.querySelector('span#term_prompt').textContent = eval('`' + prompt + '`');
   });
   stdio.in(false, function(userInput) {
-      fs.readFile('/usr/term/prompt.txt', function(prompt) {
-        console.log('debug: userInput is ' + userInput);
-        console.log('debug: prompt is ' + eval('`' + prompt + '`'));
-        stdio.out(eval('`' + prompt + '`'));
-        stdio.out(userInput);
-        Dash$(userInput);
-    });
+     Term.getPrompt(function(prompt) {
+       document.querySelector('span#term_prompt').textContent = prompt;
+       console.log('debug: userInput is ' + userInput);
+       console.log('debug: prompt is ' + prompt);
+       stdio.out(prompt);
+       stdio.out(userInput);
+       Dash$(userInput);
+       document.querySelector('span#term_prompt').textContent = prompt;
+     });
   });
 });

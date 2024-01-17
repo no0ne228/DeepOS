@@ -24,6 +24,9 @@ window.GLOBAL_STDIO_TERM_TEXT = '';
 window.GLOBAL_VFS_TMPSTATUS = -1;
 // current firectory
 window.GLOBAL_VFS_DIR = '/';
+window.GLOBAL_VFS_DIR_GET = function() {
+  return GLOBAL_VFS_DIR;
+}
 
 // user
 // user name

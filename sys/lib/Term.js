@@ -4,6 +4,8 @@
 
 ///sys/lib/Term.js
 
+import { fs } from '/sys/lib/fs.js';
+
 export const Term = {
   create: function(holder) {
     GLOBAL_STDIO_TERM = 'div#term';
@@ -16,5 +18,10 @@ export const Term = {
     } else {
       return false;
     }
+  },
+  getPrompt: function(callback) {
+    fs.readFile('/usr/term/prompt.txt', function(prompt) {
+      callback(eval('`' + prompt + '`'));
+    });
   }
 }

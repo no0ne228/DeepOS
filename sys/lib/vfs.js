@@ -227,3 +227,20 @@ export function vfs$rmfile(dir, callback) {
     }
   });
 }
+/* Change current working directory */
+export function vfs$setdir(dir, callback) {
+  fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
+    let result = [];
+    if (`${prefix}:${dir}` in localStorage) {
+      let dir$ = JSON.parse(localStorage.getItem(`${prefix}:${dir}`));
+      if (dir$.type == 'dir') {
+        window.GLOBAL_VFS_DIR = dir;
+        callback(0);
+      } else {
+        callback(2); // Error: given path is not a directory
+      }
+    } else {
+      callback(1); // Error: directory not found
+    }
+  });
+}
