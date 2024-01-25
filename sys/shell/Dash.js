@@ -7,6 +7,7 @@ import { fs } from '/sys/lib/fs.js';
 import { String$ToSpace, String$FromPos, String$ToSpaceArray } from '/sys/lib/StringUtil.js';
 
 export function Dash$(raw_cmd) {
+  stdio.nl();
   let cmd = String$ToSpace(raw_cmd);
   let args = '';
   let cargv = [];
@@ -75,5 +76,4 @@ export function Dash$(raw_cmd) {
       stdio.out(`Dash: ${cmd}: command not found`);
     }
   }
-  stdio.nl();
 }
