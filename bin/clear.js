@@ -13,8 +13,9 @@ window.Dash$_clear = function(args) {
     stdio.out('Clear the terminal');
     stdio.nl();
     stdio.nl();
-    stdio.out('-h, --help: show this messags');
+    stdio.out('-h, --help: show this message');
   } else {
     stdio.clear();
   }
+  stdio.nl();
 }
