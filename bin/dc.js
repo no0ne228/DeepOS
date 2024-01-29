@@ -6,6 +6,7 @@ import { stdio } from '/sys/lib/stdio.js';
 import { vfs$list, vfs$get } from '/sys/lib/vfs.js';
 
 window.Dash$_dc = function(args) {
+  if (args.argv[0] != '-h' && args.argv[0] != '--help') {
   if (args.argv[0] != undefined) {
   vfs$list(args.argv[0], function(status, list) {
     switch (status) {
@@ -28,7 +29,7 @@ window.Dash$_dc = function(args) {
       case 2:
         stdio.out('dc: ' + args.argv[0] + ': not a directory');
         stdio.nl();
-        dcbreak;
+        break;
       }
   });
   } else {
@@ -53,8 +54,14 @@ window.Dash$_dc = function(args) {
       case 2:
         stdio.out('dc: ' + args.argv[0] + ': not a directory');
         stdio.nl();
-        dcbreak;
+        break;
       }
   });
+  }
+  } else if (args.argv[0] == '-h' || args.argv[0] == '--help') {
+    stdio.out('dc [directory]');
+    stdio.nl();
+    stdio.nl();
+    stdio.out('--help, -h: displays this help message');
   }
 }
