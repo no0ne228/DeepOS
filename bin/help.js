@@ -28,4 +28,6 @@ window.Dash$_help = function(args) {
   stdio.nl();
   stdio.out('dc [...]');
   stdio.nl();
+  stdio.out('sd [...]');
+  stdio.nl();
 }
