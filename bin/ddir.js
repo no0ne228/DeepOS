@@ -7,7 +7,7 @@ import { stdio } from '/sys/lib/stdio.js';
 
 window.Dash$_ddir = function(args) {
   const argv = args.argv;
-  if (argv[0] != '--help', && argv[0] != '-h') {
+  if (argv[0] != '--help' && argv[0] != '-h') {
     vfs$rmdir(argv[0], function(status) {
       switch (status) {
         case 1:
@@ -30,8 +30,8 @@ window.Dash$_ddir = function(args) {
     });
   } else {
     stdio.out('ddir [...]');
-    stdio.nl();
-    stdio.nl();
+    stdio.nl(1);
     stdio.out('--help, -h: display this help message');
+    stdio.nl(0);
   }
 }

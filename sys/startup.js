@@ -17,9 +17,9 @@ if (!(Term.exists())) {
 fs.readFile('/sys/data/ver.txt', function(version) {
   stdio.out('DeepOS ' + version);
   fs.readFile('/sys/msg/DeepOS/boot/finish.txt', function(welcomeMsg) {
-    stdio.nl();
+    stdio.nl(0);
     stdio.out(welcomeMsg);
-    stdio.nl();
+    stdio.nl(0);
   });
   console.log('Launching input loop');
   fs.readFile('/usr/term/prompt.txt', function(prompt) {
