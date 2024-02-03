@@ -108,7 +108,7 @@ export const stdio = {
     }
   },
   "clearsel": function(x) {
-    if (GLOBAL_STDIO_TERM_TEXT) {
+    if (x) {
       document.querySelector(x).innerHTML = '';
     } else {
       console.warn('Error: cannot execute clear() without running terminal');
