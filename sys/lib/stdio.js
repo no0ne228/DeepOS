@@ -18,18 +18,17 @@ export const stdio = {
   "nl": function(x) { // Print a new line
     if (GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
       console.log('debug: stdio.nl typeof x: ' + typeof x);
-      /*if (typeof x == 'undefined' || typeof x == undefined) {
+      if (typeof x == 'undefined') {
         var hr = document.createElement('hr'); // Initialize new line
         document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
-      } else if (typeof x == 'Number' || typeof x == Number) {
-        */console.log('debug: stdio.nl x type is Number');
+      } else if (typeof x == 'number') {
         var hr = document.createElement('hr'); // Initialize new line
         hr.style.margin = `${x}%`;
         document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
-      /*} else {
+      } else {
         var hr = document.createElement('hr'); // Initialize new line
         document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
-      }*/
+      }
     } else {
       console.warn('Error: cannot execute nl() without running terminal');
     }
