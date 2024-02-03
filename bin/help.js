@@ -3,7 +3,6 @@
  */
 
 import { stdio } from '/sys/lib/stdio.js';
-import { fs } from '/sys/lib/fs.js';
 
 window.Dash$_help = function(args) {
   // Print avaliable commands
