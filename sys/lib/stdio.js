@@ -23,7 +23,7 @@ export const stdio = {
         document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
       } else if (typeof x == 'number') {
         var hr = document.createElement('hr'); // Initialize new line
-        hr.style.margin = `${x}%`;
+        hr.style.margin = `${x / 2}%`;
         document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
       } else {
         var hr = document.createElement('hr'); // Initialize new line
