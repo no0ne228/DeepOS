@@ -107,6 +107,13 @@ export const stdio = {
       console.warn('Error: cannot execute clear() without running terminal');
     }
   },
+  "clearsel": function(x) {
+    if (GLOBAL_STDIO_TERM_TEXT) {
+      document.querySelector(x).innerHTML = '';
+    } else {
+      console.warn('Error: cannot execute clear() without running terminal');
+    }
+  },
   "fout": function(outText, format) {
     /**fout means formatted output, for example if format is 'b'
      * then the text will be bold
