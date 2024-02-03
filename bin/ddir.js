@@ -32,6 +32,6 @@ window.Dash$_ddir = function(args) {
     stdio.out('ddir [...]');
     stdio.nl(1);
     stdio.out('--help, -h: display this help message');
-    stdio.nl(0);
+    stdio.nl();
   }
 }
