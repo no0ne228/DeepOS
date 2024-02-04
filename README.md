@@ -5,6 +5,11 @@
 A simple javascript OS
 
 ## Download and run
+### Using installer
+```bash
+curl -s https://raw.githubusercontent.com/KolibriKing/DeepOS/main/install.sh | bash
+```
+
 ### Using Github CLI
 Clone the repository
 
