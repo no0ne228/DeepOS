@@ -26,6 +26,7 @@ window.Dash$_dfile = function(args) {
     });
   } else {
     stdio.out('dfile [args]');
+    stdio.nl();
     stdio.out('Delete a file');
     stdio.nl(1);
     stdio.out('--help, -h: display this help message');
