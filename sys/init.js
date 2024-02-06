@@ -21,11 +21,11 @@ function importScript(scriptName, execOnLoad) {
   }
   var scriptNameArray = []; // Initialize scriptName Array
   var scriptId = ''; // Define script id
-  for (char of scriptName) { // Convert scriptName to Array
+  for (let char of scriptName) { // Convert scriptName to Array
     scriptNameArray.push(char);
   }
   if (scriptNameArray.includes('/')) { // Check if script is nested into other direcrory
-    for (char of scriptName) { // Loop through scriptName
+    for (let char of scriptName) { // Loop through scriptName
       if (!(char == '/')) { // Check if current character is NOT '/'
         scriptId += char; // Add character to scriptId
       } else { // If character is '/'
