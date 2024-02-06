@@ -2,6 +2,8 @@
  * Copyright 2024 KolibriKing
  */
 
+import { stdio } from '/sys/lib/stdio.js';
+
 window.Dash$_fullscreen = function(args) {
   if (args.argv[0] != '--help' && args.argv[0] != '-h') {
     console.log('debug: entering fullscreen');
