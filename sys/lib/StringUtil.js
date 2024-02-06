@@ -4,7 +4,7 @@
 
 export function String$ToSpace(string) {
   let result = '';
-  for (char of string) {
+  for (let char of string) {
     if (char != ' ') {
       result += char;
     } else {
