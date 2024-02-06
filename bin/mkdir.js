@@ -4,7 +4,6 @@
 
 import { stdio } from '/sys/lib/stdio.js';
 import { vfs$mkdir } from '/sys/lib/vfs.js';
-import { String$countChar } from '/sys/lib/StringUtil.js';
 
 window.Dash$_mkdir = function(args) {
   const argv = args.argv;
