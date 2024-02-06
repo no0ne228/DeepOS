@@ -9,7 +9,7 @@
 // System functions
 console.log('Initializing system... [/sys/init.js]');
 
-function importScript(scriptName, execOnLoad) {
+function importScript(scriptName) {
   console.log("Importing " + scriptName + "...");
   // Function to load scripts
   var script = document.createElement('script'); // Create script
