@@ -25,7 +25,6 @@ function importScript(scriptName, execOnLoad) {
     scriptNameArray.push(char);
   }
   if (scriptNameArray.includes('/')) { // Check if script is nested into other direcrory
-    var scriptId = ""; // Define script id to include into html tag
     for (char of scriptName) { // Loop through scriptName
       if (!(char == '/')) { // Check if current character is NOT '/'
         scriptId += char; // Add character to scriptId
