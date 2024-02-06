@@ -4,7 +4,7 @@
 
 import { stdio } from '/sys/lib/stdio.js';
 
-window.Dash$_help = function(args) {
+window.Dash$_help = function() {
   // Print avaliable commands
   stdio.nl();
   stdio.out('help [...]');
