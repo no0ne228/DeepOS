@@ -8,10 +8,20 @@ import { fs } from '/sys/lib/fs.js';
 window.Dash$_pkg = function(args) {
   stdio.nl();
   switch (args.argv[0]) {
-    case '--help', '-h':
+    case '-h':
+      stdio.out('pkg [install] [-h]');
+      stdio.nl();
+      stdio.out('Install/remove a package');
+      stdio.nl(1);
+      stdio.out('--help, -h: displays this help message');
+      stdio.nl();
+      stdio.out('install [link_to_js] [alias]: install a package from url');
+      break;
+    case '--help':
       stdio.out('pkg [args]');
       stdio.nl();
-      stdio.nl();
+      stdio.out('Install/remove a package');
+      stdio.nl(1);
       stdio.out('--help, -h: displays this help message');
       stdio.nl();
       stdio.out('install [link_to_js] [alias]: install a package from url');
@@ -45,7 +55,7 @@ window.Dash$_pkg = function(args) {
       }
       break;
     default:
-      stdio.out(args.argv[0] + ' is not a package command. See pkg --help for avaliable commands');
+      stdio.out(args.argv[0] + ' is not a package command. See pkg --help or pkg -h for avaliable commands');
       break;
   }
   stdio.nl();
