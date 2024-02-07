@@ -50,5 +50,5 @@ then
                                 rm $RELEASE_TAG.zip
 
                                 # Done
-                                echo "DeepOS $RELEASE_TAG is installed. You can start it by running 'python3 -m http.server 3000' or 'light-server -s . -p 3000' in the DeepOS directory and then navigate to http://0.0.0.0:3000 in a web browser."
+                                echo "DeepOS $RELEASE_TAG is installed. You can start it by navigating to DeepOS-${RELEASE_TAG} and running npm start."
                                 
