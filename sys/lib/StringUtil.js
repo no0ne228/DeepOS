@@ -25,7 +25,7 @@ export function String$ToSpaceArray(string) {
   let result = [];
   let laststr = '';
   let i = 0;
-  for (char of string) {
+  for (let char of string) {
     if (char != ' ') {
       laststr += char;
       if (i == string.length - 1) {
