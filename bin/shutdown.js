@@ -10,6 +10,16 @@ window.Dash$_shutdown = function(args) {
       /*-f, --force - force shutdown (deletes body)*/
       document.querySelector('html').remove();
       break;
+    case '--help', '-h':
+      stdio.out('shutdown [-hf]');
+      stdio.nl();
+      stdio.out('Shutdown the system');
+      stdio.nl(1);
+      stdio.out('--force, -f: force shutdown, delete html tag (reload the page to fix)');
+      stdio.nl();
+      stdio.out('--help, -h: display this help message');
+      stdio.nl();
+      break;
     default:
       switch (GLOBAL_BOOT_STATUS) {
         case 'DEFAULT_TERM':
