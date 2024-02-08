@@ -6,14 +6,8 @@ import { stdio } from '/sys/lib/stdio.js';
 
 window.Dash$_shutdown = function(args) {
   switch (args.argv[0]) {
-    case '-f':
+    case '--force', '-f':
       /*-f, --force - force shutdown (deletes body)*/
-
-      document.querySelector('html').remove();
-      break;
-      case '--force':
-      /*-f, --force - force shutdown (deletes body)*/
-
       document.querySelector('html').remove();
       break;
     default:
