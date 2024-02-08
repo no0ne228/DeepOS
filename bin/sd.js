@@ -1,4 +1,4 @@
-/*
+	/*
  * Copyright 2024 KolibriKing
  */
 
@@ -15,8 +15,11 @@ window.Dash$_sd = function(args) {
       stdio.nl(1);
       stdio.out('--help, -h: display this help message');
       stdio.nl();
+      stdio.out('--quiet, -q: don\'t display any warnings or errors');
+      stdio.nl();
       break;
     default:
+      const quiet = (args.argv.includes('--quiet') || args.argv.includes('-q'))
       vfs$setdir(args.argv[0], function(status) {
         switch (status) {
           case 0:
@@ -25,12 +28,16 @@ window.Dash$_sd = function(args) {
             });
             break;
           case 1:
-            stdio.out('sd: ' + args.argv[0] + ': directory not fuond');
-            stdio.nl();
+            if (!quiet) {
+              stdio.out('sd: ' + args.argv[0] + ': directory not fuond');
+              stdio.nl();
+            }
             break;
           case 2:
-            stdio.out('sd: ' + args.argv[0] + ': not a directory');
-            stdio.nl();
+            if (!quiet) {
+              stdio.out('sd: ' + args.argv[0] + ': not a directory');
+              stdio.nl();
+            }
             break;
           }
       });
