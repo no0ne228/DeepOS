@@ -164,7 +164,8 @@ export function vfs$mkfile(dest, dir, callback) {
                   "parent": dest,
                   "rights": ["R", "W", "D"],
                   "name": `${dest}/${dir}`,
-                  "sname": dir
+                  "sname": dir,
+                  "content": ""
                 })); // Create file object in localStorage
                 GLOBAL_VFS_TMPSTATUS = 0; // Status: done
                 callback(0);
@@ -179,7 +180,8 @@ export function vfs$mkfile(dest, dir, callback) {
                   "parent": dest,
                   "rights": ["R", "W", "D"],
                   "name": '/' + dir,
-                  "sname": dir
+                  "sname": dir,
+                  "content": ""
                 })); // Create file object in localStorage
                 GLOBAL_VFS_TMPSTATUS = 0; // Status: done
                 callback(0);
@@ -241,6 +243,24 @@ export function vfs$setdir(dir, callback) {
       }
     } else {
       callback(1); // Error: directory not found
+    }
+  });
+}
+export function vfs$writeFile(dir, c, callback) {
+  fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
+    if (`${prefix}:${dir}` in localStorage) {
+      vfs$get(dir, function(file) {
+        if (file.type === 'file') {
+          if (file.rights.includes('W')) {
+            localStorage[`${prefix}:${dir}`].content = c;
+            callback(0);
+          } else {
+            callback(3); // Error: permission denied
+          }
+        } else {
+          callback(2); // Error: given path is not a directory
+        }
+      });
     }
   });
 }
