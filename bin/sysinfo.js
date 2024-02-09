@@ -10,7 +10,19 @@ window.Dash$_sysinfo = function(args) {
   const argv = args.argv;
   stdio.nl();
   switch (argv[0]) {
-      case '--agent', '-a':
+    case '--help', '-h':
+      stdio.out('sysinfo [-ahv]');
+      stdio.nl();
+      stdio.out('Display information about system');
+      stdio.nl(1);
+      stdio.out('--agent, -a: print user agent');
+      stdio.nl();
+      stdio.out('--help, -h: display this help message');
+      stdio.nl();
+      stdio.out('--version, -v: print system version');
+      stdio.nl();
+      break;
+    case '--agent', '-a':
       // Print user agent
       stdio.out(window.navigator.userAgent);
       stdio.nl();
