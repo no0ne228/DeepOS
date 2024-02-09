@@ -16,12 +16,14 @@ window.Dash$_sysinfo = function(args) {
       stdio.nl();
       break;
     case '--version', '-v':
+      // Print system version
       fs.readFile('/sys/data/ver.txt', function(version) {
         stdio.out('DeepOS ' + version);
         stdio.nl();
       });
       break;
     default:
+      // Print user agent and version
       fs.readFile('/sys/data/ver.txt', function(version) {
         stdio.out(`DeepOS ${version} ${window.navigator.userAgent}`);
         stdio.nl();
