@@ -29,7 +29,7 @@ window.Dash$_sd = function(args) {
             break;
           case 1:
             if (!quiet) {
-              stdio.out('sd: ' + args.argv[0] + ': directory not fuond');
+              stdio.out('sd: ' + args.argv[0] + ': directory not found');
               stdio.nl();
             }
             break;
