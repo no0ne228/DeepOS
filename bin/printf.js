@@ -5,7 +5,7 @@
 import { stdio } from '/sys/lib/stdio.js';
 
 window.Dash$_printf = function(data) {
-  switch (args.argv[0]) {
+  switch (data.argv[0]) {
     case'--help', '-h':
       stdio.out('printf [-hn]');
       stdio.nl();
