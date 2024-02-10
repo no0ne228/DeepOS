@@ -22,13 +22,13 @@ window.Dash$_fwrite = function(args) {
           case 0:
             break;
           case 1:
-            stdio.out('mkfile: ' + argv[0] + ': file not found');
+            stdio.out('fwrite: ' + argv[0] + ': file not found');
             break;
           case 2:
-            stdio.out('mkfile: ' + argv[0] + ': not a file');
+            stdio.out('fwrite: ' + argv[0] + ': not a file');
             break;
           default:
-            stdio.out('mkfile: unknown code: ' + status);
+            stdio.out('fwrite: unknown code: ' + status);
             break;
         }
       });
