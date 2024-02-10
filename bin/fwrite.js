@@ -8,12 +8,12 @@ import { stdio } from '/sys/lib/stdio.js';
 window.Dash$_fwrite = function(args) {
   const argv = args.argv;
   switch (argv[0]) {
-    case '--help':
-      stdio.out('fwrite []');
+    case '--help', '-h':
+      stdio.out('fwrite [-h]');
       stdio.nl();
       stdio.out('Write to a file');
       stdio.nl(1);
-      stdio.out('--help: display this help message');
+      stdio.out('--help, -h: display this help message');
       stdio.nl();
       break;
     default:
