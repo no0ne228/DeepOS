@@ -46,6 +46,9 @@ export const stdio = {
         var input = document.createElement('input'); // Initialize new element
         input.id = 'term-input'; // Set input id
         input.type = 'text'; // Set input type
+        input.spellcheck = 'false'; // Disable spell check
+        input.autocomplete = 'off'; // Disable autocomplete
+        input.autocapitalize = 'none'; // Disaple autocapitalize
         //input.contentEditable = true;
         document.querySelector(GLOBAL_STDIO_TERM).appendChild(input); // Append input
         document.getElementById('term-input').focus(); // Focus input
