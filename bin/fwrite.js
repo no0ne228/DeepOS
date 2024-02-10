@@ -3,12 +3,22 @@
  */
 
 import { vfs$writeFile } from '/sys/lib/vfs.js';
+import { stdio } from '/sys/lib/stdio.js';
 
 window.Dash$_fwrite = function(args) {
   const argv = args.argv;
-
-  vfs$writeFile(argv[0], argv[1], function(status) {
-    switch (status) {
+  switch (argv[0]) {
+    case '--help':
+      stdio.out('fwrite []');
+      stdio.nl();
+      stdio.out('Write to a file');
+      stdio.nl(1);
+      stdio.out('--help: display this help message');
+      stdio.nl();
+      break;
+    default:
+      vfs$writeFile(argv[0], argv[1], function(status) {
+        switch (status) {
           case 0:
             break;
           case 1:
@@ -21,5 +31,7 @@ window.Dash$_fwrite = function(args) {
             stdio.out('mkfile: unknown code: ' + status);
             break;
         }
-  });
+      });
+      break;
+  }
 }
