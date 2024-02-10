@@ -252,7 +252,9 @@ export function vfs$writeFile(dir, c, callback) {
       vfs$get(dir, function(file) {
         if (file.type === 'file') {
           if (file.rights.includes('W')) {
-            localStorage[`${prefix}:${dir}`].content = c;
+            let nf = JSON.parse(localStorage[`${prefix}:${dir}`]);
+            nf.content = c;
+            localStorage.setItem(`${prefix}:${dir}`, JSON.stringify(nf));
             callback(0);
           } else {
             callback(3); // Error: permission denied
@@ -261,6 +263,8 @@ export function vfs$writeFile(dir, c, callback) {
           callback(2); // Error: given path is not a directory
         }
       });
+    } else {
+      callback(1); // Error: file not found
     }
   });
 }
