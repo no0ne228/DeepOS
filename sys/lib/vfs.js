@@ -260,11 +260,31 @@ export function vfs$writeFile(dir, c, callback) {
             callback(3); // Error: permission denied
           }
         } else {
-          callback(2); // Error: given path is not a directory
+          callback(2); // Error: given path is not a file
         }
       });
     } else {
       callback(1); // Error: file not found
     }
   });
+}
+
+export function vfs$readFile(dir, callback) {
+    fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
+      if (`${prefix}:${dir}` in localStorage) {
+        vfs$get(dir, function(file) {
+          if (file.type === 'file') {
+            if (file.rights.includes('R')) {
+              callback(0, file.content);
+            } else {
+              callback(3, null); // Error: permission denied
+            }
+          } else {
+            callback(2, null); // Error: given path is not a file
+          }
+        });
+      } else {
+        callback(1, null); // Error: file not found
+      }
+    });
 }

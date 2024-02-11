@@ -14,6 +14,7 @@ import { Dash$ } from '/sys/shell/Dash.js';
 if (!(Term.exists())) {
   Term.create('div#term');
 }
+
 fs.readFile('/sys/data/ver.txt', function(version) {
   stdio.out('DeepOS ' + version);
   fs.readFile('/sys/msg/DeepOS/boot/finish.txt', function(welcomeMsg) {
