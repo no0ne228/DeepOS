@@ -30,6 +30,7 @@ function vfs$parseDir(dir) {
 }
 /* Create a directory in a virtual filesystem */
 export function vfs$mkdir(adest, dir, callback) {
+  const dest = vfs$parseDir(adest);
   vfs$checkRoot(); // Check root in virtual filesystem
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) { // Read vfs prefix
     console.log('debug: vfs_prefix is ' + prefix);
@@ -130,7 +131,8 @@ export function vfs$get(item, callback) {
   });
 }
 /* Remove a directory */
-export function vfs$rmdir(dir, callback) {
+export function vfs$rmdir(adir, callback) {
+  const dir = vfs$parseDir(adir);
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     if (`${prefix}:${dir}` in localStorage) {
       vfs$get(dir, function(dir$) {
@@ -158,8 +160,9 @@ export function vfs$rmdir(dir, callback) {
   });
 }
 /* Create a file in a virtual filesystem */
-export function vfs$mkfile(dest, dir, callback) {
+export function vfs$mkfile(adest, dir, callback) {
   /* note: dir is file name */
+  const dest = vfs$parseDir(adest);
   vfs$checkRoot(); // Check root in virtual filesystem
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) { // Read vfs prefix
     console.log('debug: vfs_prefix is ' + prefix);
@@ -221,7 +224,8 @@ export function vfs$mkfile(dest, dir, callback) {
   });
 }
 /* Remove a file */
-export function vfs$rmfile(dir, callback) {
+export function vfs$rmfile(adir, callback) {
+  const dir = vfs$parseDir(adir);
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     if (`${prefix}:${dir}` in localStorage) {
       vfs$get(dir, function(dir$) {
@@ -243,6 +247,7 @@ export function vfs$rmfile(dir, callback) {
 }
 /* Change current working directory */
 export function vfs$setdir(dir, callback) {
+  const dir = vfs$parseDir(adir);
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     let result = [];
     if (`${prefix}:${dir}` in localStorage) {
@@ -259,7 +264,8 @@ export function vfs$setdir(dir, callback) {
   });
 }
 export function vfs$writeFile(dir, c, callback) {
-  fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
+    const dir = vfs$parseDir(adir);
+    fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     if (`${prefix}:${dir}` in localStorage) {
       vfs$get(dir, function(file) {
         if (file.type === 'file') {
@@ -282,21 +288,22 @@ export function vfs$writeFile(dir, c, callback) {
 }
 
 export function vfs$readFile(dir, callback) {
-    fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
-      if (`${prefix}:${dir}` in localStorage) {
-        vfs$get(dir, function(file) {
-          if (file.type === 'file') {
-            if (file.rights.includes('R')) {
-              callback(0, file.content);
-            } else {
-              callback(3, null); // Error: permission denied
-            }
+  const dir = vfs$parseDir(adir);
+  fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
+    if (`${prefix}:${dir}` in localStorage) {
+      vfs$get(dir, function(file) {
+        if (file.type === 'file') {
+          if (file.rights.includes('R')) {
+            callback(0, file.content);
           } else {
-            callback(2, null); // Error: given path is not a file
+            callback(3, null); // Error: permission denied
           }
-        });
-      } else {
-        callback(1, null); // Error: file not found
-      }
-    });
+        } else {
+          callback(2, null); // Error: given path is not a file
+        }
+      });
+    } else {
+      callback(1, null); // Error: file not found
+    }
+  });
 }
