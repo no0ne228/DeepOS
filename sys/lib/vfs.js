@@ -90,7 +90,8 @@ export function vfs$mkdir(adest, dir, callback) {
   });
 }
 /*List all sub-directories and files in a directory*/
-export function vfs$list(dir, callback) {
+export function vfs$list(adir, callback) {
+  const dir = vfs$parseDir(adir);
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     let result = [];
     if (`${prefix}:${dir}` in localStorage) {
@@ -246,7 +247,7 @@ export function vfs$rmfile(adir, callback) {
   });
 }
 /* Change current working directory */
-export function vfs$setdir(dir, callback) {
+export function vfs$setdir(adir, callback) {
   const dir = vfs$parseDir(adir);
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     let result = [];
@@ -263,7 +264,7 @@ export function vfs$setdir(dir, callback) {
     }
   });
 }
-export function vfs$writeFile(dir, c, callback) {
+export function vfs$writeFile(adir, c, callback) {
     const dir = vfs$parseDir(adir);
     fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     if (`${prefix}:${dir}` in localStorage) {
@@ -287,7 +288,7 @@ export function vfs$writeFile(dir, c, callback) {
   });
 }
 
-export function vfs$readFile(dir, callback) {
+export function vfs$readFile(adir, callback) {
   const dir = vfs$parseDir(adir);
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     if (`${prefix}:${dir}` in localStorage) {
