@@ -21,7 +21,9 @@ function vfs$parseDir(dir) {
   let newdir = '';
   for (let char of dir) {
     if (char === '.') {
-      newdir += GLOBAL_VFS_DIR;
+      if (GLOBAL_VFS_DIR !== '/') {
+        newdir += GLOBAL_VFS_DIR;
+      }
     } else {
       newdir += char;
     }
