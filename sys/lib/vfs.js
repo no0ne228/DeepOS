@@ -16,8 +16,20 @@ function vfs$checkRoot() {
     }
   });
 }
+/* Parse directory */
+function vfs$parseDir(dir) {
+  let newdir = '';
+  for (let char of dir) {
+    if (char === '.') {
+      newdir += GLOBAL_VFS_DIR;
+    } else {
+      newdir += char;
+    }
+  }
+  return newdir;
+}
 /* Create a directory in a virtual filesystem */
-export function vfs$mkdir(dest, dir, callback) {
+export function vfs$mkdir(adest, dir, callback) {
   vfs$checkRoot(); // Check root in virtual filesystem
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) { // Read vfs prefix
     console.log('debug: vfs_prefix is ' + prefix);
