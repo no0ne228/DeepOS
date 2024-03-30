@@ -68,6 +68,17 @@ export class Window {
     this.windowIcon.style.position = 'absolute';
     this.windowIcon.style.top = '1vh';
     this.windowIcon.style.left = '1vw';
+    /*window close button*/
+    this.windowCloseIcon = document.createElement('img');
+    this.windowCloseIcon.src = '/usr/icons/Window/close.png';
+    this.windowCloseIcon.style.width = '5vw';
+    this.windowCloseIcon.style.height = '5vw';
+    this.windowCloseIcon.style.position = 'absolute';
+    this.windowCloseIcon.style.top = '0.75vh';
+    this.windowCloseIcon.style.right = '1vw';
+    this.windowCloseIcon.onclick = function() {
+      document.querySelector('div#window').remove();
+    }
   }
   init() {
     document.querySelector("body").appendChild(this.allWindow);
@@ -75,6 +86,7 @@ export class Window {
     document.querySelector("div#window").appendChild(this.windowBar);
     document.querySelector("div#window").appendChild(this.windowTitle);
     document.querySelector('div#window').appendChild(this.windowIcon);
+    document.querySelector('div#window').appendChild(this.windowCloseIcon);
   }
 }
 
