@@ -23,7 +23,8 @@ window.Dash$_desktop = function(args) {
       top: '25vh',
       left: '25vw'
     },
-    title: 'Dash Terminal'
+    title: 'Dash Terminal',
+    icon: '/usr/icons/apps/terminal.png'
   });
   window.init();
 }

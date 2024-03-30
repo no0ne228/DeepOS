@@ -52,20 +52,29 @@ export class Window {
       clicked = false;
     });
     /*window title*/
-    this.windowTitle = document.createElement("span");
+    this.windowTitle = document.createElement('span');
     this.windowTitle.textContent = data.title;
-    this.windowTitle.style.color = "#ffffff";
-    this.windowTitle.style.position = "absolute";
-    this.windowTitle.style.top = "0";
-    this.windowTitle.style.left = "0";
-    this.windowTitle.style.fontSize = "3vh";
-    this.windowTitle.style.fontFamily = "sans-serif";
+    this.windowTitle.style.color = '#ffffff';
+    this.windowTitle.style.position = 'absolute';
+    this.windowTitle.style.top = '0.8vh';
+    this.windowTitle.style.left = 'calc(5vw + 1vw)';
+    this.windowTitle.style.fontSize = '2vh';
+    this.windowTitle.style.fontFamily = 'sans-serif';
+    /*window icon*/
+    this.windowIcon = document.createElement('img');
+    this.windowIcon.src = data.icon;
+    this.windowIcon.style.width = '4vw';
+    this.windowIcon.style.height = '4vw';
+    this.windowIcon.style.position = 'absolute';
+    this.windowIcon.style.top = '1vh';
+    this.windowIcon.style.left = '1vw';
   }
   init() {
     document.querySelector("body").appendChild(this.allWindow);
     document.querySelector("div#window").appendChild(this.windowContent);
     document.querySelector("div#window").appendChild(this.windowBar);
     document.querySelector("div#window").appendChild(this.windowTitle);
+    document.querySelector('div#window').appendChild(this.windowIcon);
   }
 }
 
