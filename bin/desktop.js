@@ -7,8 +7,9 @@ window.Dash$_desktop = function(args) {
   
   var desktop = new Desktop({
     bg: {
-      type: 'fill',
-      fill: 'lightgray'
+      type: 'img',
+      bg: '/usr/backgrounds/jellyfish.jpg',
+      alt: 'Jellyfish'
     },
     topbar: {
       fill: 'rgb(98, 98, 98)'

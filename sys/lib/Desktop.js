@@ -63,16 +63,16 @@ export class Window {
     /*window icon*/
     this.windowIcon = document.createElement('img');
     this.windowIcon.src = data.icon;
-    this.windowIcon.style.width = '4vw';
-    this.windowIcon.style.height = '4vw';
+    this.windowIcon.style.width = '2vh';
+    this.windowIcon.style.height = '2vh';
     this.windowIcon.style.position = 'absolute';
     this.windowIcon.style.top = '1vh';
-    this.windowIcon.style.left = '1vw';
+    this.windowIcon.style.left = '0.5vw';
     /*window close button*/
     this.windowCloseIcon = document.createElement('img');
     this.windowCloseIcon.src = '/usr/icons/Window/close.png';
-    this.windowCloseIcon.style.width = '5vw';
-    this.windowCloseIcon.style.height = '5vw';
+    this.windowCloseIcon.style.width = '2.5vh';
+    this.windowCloseIcon.style.height = '2.5vh';
     this.windowCloseIcon.style.position = 'absolute';
     this.windowCloseIcon.style.top = '0.75vh';
     this.windowCloseIcon.style.right = '1vw';
@@ -94,9 +94,9 @@ export class Desktop {
   constructor(data) {
     /*background*/
     this.data = data;
-    this.bg = document.createElement("div");
-    this.bg.id = "desktop";
-    this.bg.style.backgroundColor = this.data.bg.fill;
+    this.bg = document.createElement("img");
+    this.bg.id = "desktop_bg";
+    this.bg.src = data.bg.bg;
     this.bg.style.width = "100vw";
     this.bg.style.height = "100vh";
     this.bg.style.display = "block";
@@ -104,6 +104,7 @@ export class Desktop {
     this.bg.style.top = "0";
     this.bg.style.left = "0";
     this.bg.style.zIndex = "0";
+    this.bg.alt = data.alt;
     /*tobpar*/
     this.topbar = document.createElement("div");
     this.topbar.style.backgroundColor = this.data.topbar.fill;
