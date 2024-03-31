@@ -57,24 +57,24 @@ export class Window {
     this.windowTitle.style.color = '#ffffff';
     this.windowTitle.style.position = 'absolute';
     this.windowTitle.style.top = '0.8vh';
-    this.windowTitle.style.left = 'calc(5vw + 1vw)';
+    this.windowTitle.style.left = 'calc(3.5vh + 1vw)';
     this.windowTitle.style.fontSize = '2vh';
     this.windowTitle.style.fontFamily = 'sans-serif';
     /*window icon*/
     this.windowIcon = document.createElement('img');
     this.windowIcon.src = data.icon;
-    this.windowIcon.style.width = '2vh';
-    this.windowIcon.style.height = '2vh';
+    this.windowIcon.style.width = '3.5vh';
+    this.windowIcon.style.height = '3.5vh';
     this.windowIcon.style.position = 'absolute';
-    this.windowIcon.style.top = '1vh';
+    this.windowIcon.style.top = '0.25vh';
     this.windowIcon.style.left = '0.5vw';
     /*window close button*/
     this.windowCloseIcon = document.createElement('img');
     this.windowCloseIcon.src = '/usr/icons/Window/close.png';
-    this.windowCloseIcon.style.width = '2.5vh';
-    this.windowCloseIcon.style.height = '2.5vh';
+    this.windowCloseIcon.style.width = '3.5vh';
+    this.windowCloseIcon.style.height = '3.5vh';
     this.windowCloseIcon.style.position = 'absolute';
-    this.windowCloseIcon.style.top = '0.75vh';
+    this.windowCloseIcon.style.top = '0.25vh';
     this.windowCloseIcon.style.right = '1vw';
     this.windowCloseIcon.onclick = function() {
       document.querySelector('div#window').remove();
