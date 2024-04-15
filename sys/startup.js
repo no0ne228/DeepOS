@@ -10,10 +10,13 @@ import { stdio } from '/sys/lib/stdio.js';
 import { fs } from '/sys/lib/fs.js';
 import { Term } from '/sys/lib/Term.js';
 import { Dash$ } from '/sys/shell/Dash.js';
+import { vfs$checkRoot } from '/sys/lib/vfs.js';
 
 if (!(Term.exists())) {
   Term.create('div#term');
 }
+
+vfs$checkRoot();
 
 fs.readFile('/sys/data/ver.txt', function(version) {
   stdio.out('DeepOS ' + version);

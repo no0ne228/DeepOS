@@ -5,7 +5,7 @@
 import { fs } from '/sys/lib/fs.js';
 
 /* Check if root exists */
-function vfs$checkRoot() {
+export function vfs$checkRoot() {
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
     if (!(`${prefix}:/` in localStorage)) {
       localStorage.setItem(`${prefix}:/`, JSON.stringify({
