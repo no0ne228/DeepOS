@@ -4,7 +4,7 @@ window.Dash$_desktop = function(args) {
   GLOBAL_BOOT_STATUS = 'DEFAULT_GRAPHICAL';
   document.querySelector('div#term').remove();
   document.querySelector('body').style.cursor = 'default';
-  
+
   var desktop = new Desktop({
     bg: {
       type: 'img',
@@ -12,7 +12,8 @@ window.Dash$_desktop = function(args) {
       alt: 'Jellyfish'
     },
     topbar: {
-      fill: 'rgb(98, 98, 98)'
+      fill: 'rgb(98, 98, 98)',
+      timeColor: '#ffffff'
     }
   });
   desktop.init();

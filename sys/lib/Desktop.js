@@ -115,9 +115,29 @@ export class Desktop {
     this.topbar.style.top = "0";
     this.topbar.style.left = "0";
     this.topbar.style.zIndex = "5100";
+    /*topbar time*/
+    this.topbar_time = document.createElement('span');
+    this.topbar_time.style.zIndex = '5101';
+    this.topbar_time.style.position = 'absolute';
+    this.topbar_time.style.fontSize = '2vh';
+    this.topbar_time.style.top = '1.5vh';
+    this.topbar_time.style.left = '3vw';
+    this.topbar_time.style.fontFamily = 'sans-serif';
+    this.topbar_time.style.fontFamily = data.topbar.timeColor;
+    this.topbar_time.id = 'desktop_topbar_time';
+    this.topbar_time_update = setInterval(function() {
+      let d = new Date();
+      let hours = d.getHours();
+      let minutes = d.getMinutes();
+      if (minutes <= 9) {
+        minutes = '0' + minutes;
+      }
+      document.querySelector('span#desktop_topbar_time').textContent = `${hours}:${minutes}`;
+    }, 1000);
   }
   init() {
     document.querySelector("body").appendChild(this.bg);
     document.querySelector("body").appendChild(this.topbar);
+    document.querySelector('body').appendChild(this.topbar_time);
   }
 }
