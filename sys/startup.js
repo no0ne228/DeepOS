@@ -12,6 +12,10 @@ import { Term } from '/sys/lib/Term.js';
 import { Dash$ } from '/sys/shell/Dash.js';
 import { vfs$checkRoot } from '/sys/lib/vfs.js';
 
+if (!('DeepOS.Dash.history' in localStorage)) {
+  localStorage.setItem('DeepOS.Dash.history', '[]');
+}
+
 if (!(Term.exists())) {
   Term.create('div#term');
 }

@@ -9,6 +9,9 @@ import { String$ToSpace, String$FromPos, String$ToSpaceArray } from '/sys/lib/St
 export function Dash$(raw_cmd) {
   stdio.nl();
   let cmd = String$ToSpace(raw_cmd);
+  let history = JSON.parse(localStorage.getItem('DeepOS.Dash.history'));
+  history.push(cmd);
+  localStorage.setItem('DeepOS.Dash.history', JSON.stringify(history));
   let args = '';
   let cargv = [];
   if (cmd != raw_cmd) {

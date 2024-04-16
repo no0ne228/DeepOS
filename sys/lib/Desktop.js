@@ -119,8 +119,8 @@ export class Desktop {
     this.topbar_time = document.createElement('span');
     this.topbar_time.style.zIndex = '5101';
     this.topbar_time.style.position = 'absolute';
-    this.topbar_time.style.fontSize = '2vh';
-    this.topbar_time.style.top = '1.5vh';
+    this.topbar_time.style.fontSize = '3vh';
+    this.topbar_time.style.top = '1vh';
     this.topbar_time.style.left = '3vw';
     this.topbar_time.style.fontFamily = 'sans-serif';
     this.topbar_time.style.fontFamily = data.topbar.timeColor;
