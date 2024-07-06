@@ -1,6 +1,6 @@
 {
   "name": "deepos",
-  "version": "0.13.2",
+  "version": "0.15.1",
   "description": "A simple JavaScript OS",
   "main": "start.js",
   "bin": {
