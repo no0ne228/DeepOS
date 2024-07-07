@@ -19,6 +19,8 @@ window.GLOBAL_STDIO_INPUT_ALLOWED = true;
 window.GLOBAL_STDIO_TERM = '';
 // terminal text location
 window.GLOBAL_STDIO_TERM_TEXT = '';
+// new terminal text color
+window.GLOBAL_STDIO_TERM_TEXT_COLOR = '#ffffff';
 // vfs
 // latest return status
 window.GLOBAL_VFS_TMPSTATUS = -1;
