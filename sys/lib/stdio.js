@@ -132,6 +132,7 @@ export const stdio = {
       var text = document.createElement('span'); // Initialize new element
       text.innerHTML = '<' + format + '>' + outText + '</' + format + '>'; // Change new element's text
       text.className = 'term-text'; // Change new element's class
+      text.style.color = GLOBAL_STDIO_TERM_TEXT_COLOR; // Change new element's color
       document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(text); // Append element to terminal
     } else {
       console.warn('Error: cannot execute out() without running terminal');
