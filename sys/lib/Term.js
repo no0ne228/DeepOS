@@ -20,8 +20,6 @@ export const Term = {
     }
   },
   getPrompt: function(callback) {
-    fs.readFile('/usr/term/prompt.txt', function(prompt) {
-      callback(eval('`' + prompt + '`'));
-    });
+    callback(eval('`' + GLOBAL_USER_PROMPT + '`'));
   }
 }
