@@ -72,6 +72,7 @@ export class Window {
     this.windowIcon.style.top = '0.25vh';
     this.windowIcon.style.left = '0.5vw';
     this.windowIcon.style.userSelect = 'none';
+    this.windowIcon.style.webkitUserDrag = 'none';
     /*window close button*/
     this.windowCloseIcon = document.createElement('img');
     this.windowCloseIcon.src = '/usr/icons/Window/close.png';
@@ -81,6 +82,7 @@ export class Window {
     this.windowCloseIcon.style.top = '0.25vh';
     this.windowCloseIcon.style.right = '1vw';
     this.windowCloseIcon.style.userSelect = 'none';
+    this.windowCloseIcon.style.webkitUserDrag = 'none';
     this.windowCloseIcon.onclick = function() {
       document.querySelector('div#window').remove();
     }
