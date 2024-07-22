@@ -19,7 +19,7 @@ window.Dash$_desktop = function(args) {
   desktop.init();
   var window = new Window({
     width: '50vw',
-    height: '25vh',
+    height: '50vh',
     src: '/index.html',
     pos: {
       top: '25vh',
