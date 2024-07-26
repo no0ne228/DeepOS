@@ -13,8 +13,8 @@ export class Window {
     this.allWindow.style.left = data.pos.left;
     this.allWindow.id = "window";
     this.allWindow.style.zIndex = 5100;
-    //this.allWindow.style.cursor = "move";
-    this.allWindow.draggable = true;
+    this.allWindow.draggable = false;
+    this.allWindow.style.userSelect = 'none';
     /*window content iframe*/
     this.windowContent = document.createElement("iframe");
     this.windowContent.style.height = data.height;
@@ -23,6 +23,7 @@ export class Window {
     this.windowContent.style.bottom = "0";
     this.windowContent.style.border = "none";
     this.windowContent.src = data.src;
+    this.windowContent.style.userSelect = 'none';
     /*window bar*/
     this.windowBar = document.createElement("div");
     this.windowBar.style.height = "4vh";
@@ -31,7 +32,8 @@ export class Window {
     this.windowBar.style.position = "absolute";
     this.windowBar.style.top = "0";
     this.windowBar.style.cursor = "move";
-    this.windowBar.draggable = true;
+    this.windowBar.style.webkitUserDrag = 'none';
+    this.windowBar.style.userSelect = 'none';
     /* Add event listeners for window movement */
     let clicked = false;
     let x, y;
@@ -60,6 +62,7 @@ export class Window {
     this.windowTitle.style.left = 'calc(3.5vh + 1vw)';
     this.windowTitle.style.fontSize = '2vh';
     this.windowTitle.style.fontFamily = 'sans-serif';
+    this.windowTitle.style.userSelect = 'none';
     /*window icon*/
     this.windowIcon = document.createElement('img');
     this.windowIcon.src = data.icon;
@@ -68,6 +71,8 @@ export class Window {
     this.windowIcon.style.position = 'absolute';
     this.windowIcon.style.top = '0.25vh';
     this.windowIcon.style.left = '0.5vw';
+    this.windowIcon.style.userSelect = 'none';
+    this.windowIcon.style.webkitUserDrag = 'none';
     /*window close button*/
     this.windowCloseIcon = document.createElement('img');
     this.windowCloseIcon.src = '/usr/icons/Window/close.png';
@@ -76,6 +81,8 @@ export class Window {
     this.windowCloseIcon.style.position = 'absolute';
     this.windowCloseIcon.style.top = '0.25vh';
     this.windowCloseIcon.style.right = '1vw';
+    this.windowCloseIcon.style.userSelect = 'none';
+    this.windowCloseIcon.style.webkitUserDrag = 'none';
     this.windowCloseIcon.onclick = function() {
       document.querySelector('div#window').remove();
     }
@@ -105,6 +112,8 @@ export class Desktop {
     this.bg.style.left = "0";
     this.bg.style.zIndex = "0";
     this.bg.alt = data.alt;
+    this.bg.style.userSelect = 'none';
+    this.bg.style.webkitUserDrag = 'none';
     /*tobpar*/
     this.topbar = document.createElement("div");
     this.topbar.style.backgroundColor = this.data.topbar.fill;
@@ -115,16 +124,18 @@ export class Desktop {
     this.topbar.style.top = "0";
     this.topbar.style.left = "0";
     this.topbar.style.zIndex = "5100";
+    this.topbar.style.userSelect = 'none';
     /*topbar time*/
     this.topbar_time = document.createElement('span');
     this.topbar_time.style.zIndex = '5101';
     this.topbar_time.style.position = 'absolute';
     this.topbar_time.style.fontSize = '3vh';
     this.topbar_time.style.top = '1vh';
-    this.topbar_time.style.left = '3vw';
+    this.topbar_time.style.left = '0.5vw';
     this.topbar_time.style.fontFamily = 'sans-serif';
     this.topbar_time.style.fontFamily = data.topbar.timeColor;
     this.topbar_time.id = 'desktop_topbar_time';
+    this.topbar_time.style.userSelect = 'none';
     this.topbar_time_update = setInterval(function() {
       let d = new Date();
       let hours = d.getHours();

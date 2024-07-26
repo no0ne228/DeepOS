@@ -6,6 +6,9 @@
 
 // This DeepOS boot
 
+// Module to set prompt
+import { fs } from '/sys/lib/fs.js';
+
 // Environment variables
 // Boot
 // status
@@ -19,6 +22,8 @@ window.GLOBAL_STDIO_INPUT_ALLOWED = true;
 window.GLOBAL_STDIO_TERM = '';
 // terminal text location
 window.GLOBAL_STDIO_TERM_TEXT = '';
+// new terminal text color
+window.GLOBAL_STDIO_TERM_TEXT_COLOR = '#ffffff';
 // vfs
 // latest return status
 window.GLOBAL_VFS_TMPSTATUS = -1;
@@ -31,6 +36,12 @@ window.GLOBAL_VFS_DIR_GET = function() {
 // user
 // user name
 window.GLOBAL_USER_NAME = 'user';
+// prompt
+window.GLOBAL_USER_PROMPT = 'user@localhost$ '; // This is default prompt
+
+fs.readFile('/usr/term/prompt.txt', function(prompt) {
+  GLOBAL_USER_PROMPT = prompt;
+});
 
 // Storage
 // Packages
