@@ -4,3 +4,4 @@ package-lock.json
 .eslintrc.json
 .replit
 replit.nix
+eslint.config.mjs
