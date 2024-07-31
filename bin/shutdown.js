@@ -21,7 +21,7 @@ window.Dash$_shutdown = function(args) {
       stdio.nl();
       break;
     default:
-      switch (GLOBAL_BOOT_STATUS) {
+      switch (window.GLOBAL_BOOT_STATUS) {
         case 'DEFAULT_TERM':
           document.querySelector('div#term').remove();
           break;

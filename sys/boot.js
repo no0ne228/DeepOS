@@ -9,6 +9,9 @@
 // Module to set prompt
 import { fs } from '/sys/lib/fs.js';
 
+// Module to load startup script
+import { loadScript } from '/sys/lib/loadScript.js';
+
 // Environment variables
 // Boot
 // status
@@ -30,7 +33,7 @@ window.GLOBAL_VFS_TMPSTATUS = -1;
 // current firectory
 window.GLOBAL_VFS_DIR = '/';
 window.GLOBAL_VFS_DIR_GET = function() {
-  return GLOBAL_VFS_DIR;
+  return window.GLOBAL_VFS_DIR;
 }
 
 // user
@@ -40,7 +43,7 @@ window.GLOBAL_USER_NAME = 'user';
 window.GLOBAL_USER_PROMPT = 'user@localhost$ '; // This is default prompt
 
 fs.readFile('/usr/term/prompt.txt', function(prompt) {
-  GLOBAL_USER_PROMPT = prompt;
+  window.GLOBAL_USER_PROMPT = prompt;
 });
 
 // Storage
@@ -50,8 +53,8 @@ if (!('DeepOS.pkg' in localStorage)) {
 }
 
 // Setup elements
-document.querySelector('div#term').addEventListener('click', function(e) {
-  if (GLOBAL_STDIO_INPUT) {
+document.querySelector('div#term').addEventListener('click', function() {
+  if (window.GLOBAL_STDIO_INPUT) {
     document.querySelector('input#term-input').focus();
   }
 });
@@ -63,13 +66,12 @@ document.body.onload = async function() {
     await fetch('https://api.ipify.org').then(res => res.text()).then(data => {
       window.GLOBAL_USER_IP = data;
       console.log('debug: got user ip');
-      importScript('/sys/startup.js');
+      loadScript('/sys/startup.js');
     });
   } catch (e) {
     console.warn('debug: unable to get user ip, using localhost, stack: \n' + e.stack);
     window.GLOBAL_USER_IP = 'localhost';
-    importScript('/sys/startup.js');
-
+    loadScript('/sys/startup.js');
   }
 }
 

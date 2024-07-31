@@ -21,8 +21,8 @@ function vfs$parseDir(dir) {
   let newdir = '';
   for (let char of dir) {
     if (char === '.') {
-      if (GLOBAL_VFS_DIR !== '/') {
-        newdir += GLOBAL_VFS_DIR;
+      if (window.GLOBAL_VFS_DIR !== '/') {
+        newdir += window.GLOBAL_VFS_DIR;
       }
     } else {
       newdir += char;
@@ -51,10 +51,10 @@ export function vfs$mkdir(adest, dir, callback) {
                   "name": `${dest}/${dir}`,
                   "sname": dir
                 })); // Create directory object in localStorage
-                GLOBAL_VFS_TMPSTATUS = 0; // Status: done
+                window.GLOBAL_VFS_TMPSTATUS = 0; // Status: done
                 callback(0);
               } else {
-                GLOBAL_VFS_TMPSTATUS = 5; // Error: directory already exists
+                window.GLOBAL_VFS_TMPSTATUS = 5; // Error: directory already exists
                 callback(5);
               }
             } else {
@@ -66,27 +66,27 @@ export function vfs$mkdir(adest, dir, callback) {
                   "name": '/' + dir,
                   "sname": dir
                 })); // Create directory object in localStorage
-                GLOBAL_VFS_TMPSTATUS = 0; // Status: done
+                window.GLOBAL_VFS_TMPSTATUS = 0; // Status: done
                 callback(0);
               } else {
-                GLOBAL_VFS_TMPSTATUS = 5; // Error: directory already exists
+                window.GLOBAL_VFS_TMPSTATUS = 5; // Error: directory already exists
                 callback(5);
               }
             }
           } else {
-            GLOBAL_VFS_TMPSTATUS = 4; // Error: directory name contains invalid characters
+            window.GLOBAL_VFS_TMPSTATUS = 4; // Error: directory name contains invalid characters
             callback(4);
           }
         } else {
-          GLOBAL_VFS_TMPSTATUS = 3; // Error: permission denied
+          window.GLOBAL_VFS_TMPSTATUS = 3; // Error: permission denied
           callback(3);
         }
       } else {
-        GLOBAL_VFS_TMPSTATUS = 2; // Error: given path is not a directory
+        window.GLOBAL_VFS_TMPSTATUS = 2; // Error: given path is not a directory
         callback(2);
       }
     } else {
-      GLOBAL_VFS_TMPSTATUS = 1; // Error: destination directory not found
+      window.GLOBAL_VFS_TMPSTATUS = 1; // Error: destination directory not found
       callback(1);
     }
   });
@@ -185,10 +185,10 @@ export function vfs$mkfile(adest, dir, callback) {
                   "sname": dir,
                   "content": ""
                 })); // Create file object in localStorage
-                GLOBAL_VFS_TMPSTATUS = 0; // Status: done
+                window.GLOBAL_VFS_TMPSTATUS = 0; // Status: done
                 callback(0);
               } else {
-                GLOBAL_VFS_TMPSTATUS = 5; // Error: file already exists
+                window.GLOBAL_VFS_TMPSTATUS = 5; // Error: file already exists
                 callback(5);
               }
             } else {
@@ -201,27 +201,27 @@ export function vfs$mkfile(adest, dir, callback) {
                   "sname": dir,
                   "content": ""
                 })); // Create file object in localStorage
-                GLOBAL_VFS_TMPSTATUS = 0; // Status: done
+                window.GLOBAL_VFS_TMPSTATUS = 0; // Status: done
                 callback(0);
               } else {
-                GLOBAL_VFS_TMPSTATUS = 5; // Error: file already exists
+                window.GLOBAL_VFS_TMPSTATUS = 5; // Error: file already exists
                 callback(5);
               }
             }
           } else {
-            GLOBAL_VFS_TMPSTATUS = 4; // Error: file name contains invalid characters
+            window.GLOBAL_VFS_TMPSTATUS = 4; // Error: file name contains invalid characters
             callback(4);
           }
         } else {
-          GLOBAL_VFS_TMPSTATUS = 3; // Error: permission denied
+          window.GLOBAL_VFS_TMPSTATUS = 3; // Error: permission denied
           callback(3);
         }
       } else {
-        GLOBAL_VFS_TMPSTATUS = 2; // Error: given path is not a directory
+        window.GLOBAL_VFS_TMPSTATUS = 2; // Error: given path is not a directory
         callback(2);
       }
     } else {
-      GLOBAL_VFS_TMPSTATUS = 1; // Error: destination directory not found
+      window.GLOBAL_VFS_TMPSTATUS = 1; // Error: destination directory not found
       callback(1);
     }
   });
@@ -244,7 +244,7 @@ export function vfs$rmfile(adir, callback) {
         }
       });
     } else {
-      callback(1); // Error: item not found
+	      callback(1); // Error: item not found
     }
   });
 }
@@ -252,7 +252,6 @@ export function vfs$rmfile(adir, callback) {
 export function vfs$setdir(adir, callback) {
   const dir = vfs$parseDir(adir);
   fs.readFile('/sys/cfg/vfs_prefix.txt', function(prefix) {
-    let result = [];
     if (`${prefix}:${dir}` in localStorage) {
       let dir$ = JSON.parse(localStorage.getItem(`${prefix}:${dir}`));
       if (dir$.type == 'dir') {

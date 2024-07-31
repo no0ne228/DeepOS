@@ -6,6 +6,7 @@ import { stdio } from '/sys/lib/stdio.js';
 import { fs } from '/sys/lib/fs.js';
 
 window.Dash$_pkg = function(args) {
+  let pkgs;
   stdio.nl();
   switch (args.argv[0]) {
     case '-h':
@@ -27,7 +28,7 @@ window.Dash$_pkg = function(args) {
       stdio.out('install [link_to_js] [alias]: install a package from url');
       break;
     case 'install':
-      let pkgs = JSON.parse(localStorage.getItem('DeepOS.pkg'));
+      pkgs = JSON.parse(localStorage.getItem('DeepOS.pkg'));
       stdio.nl();
       stdio.out('Checking package...');
       if (!(pkgs.includes(args.argv[2]))) {

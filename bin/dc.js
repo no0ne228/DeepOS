@@ -33,7 +33,7 @@ window.Dash$_dc = function(args) {
         }
       });
     } else {
-      vfs$list(GLOBAL_VFS_DIR, function(status, list) {
+      vfs$list(window.GLOBAL_VFS_DIR, function(status, list) {
         switch (status) {
           case 0:
             for (let dir of list) {

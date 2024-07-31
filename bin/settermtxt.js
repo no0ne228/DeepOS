@@ -5,7 +5,8 @@
 import { stdio } from '/sys/lib/stdio.js';
 
 window.Dash$_settermtxt = function(args) {
-    switch (args.argv[0]) {
+  let termTextElements;
+  switch (args.argv[0]) {
     case '--help', '-h':
       stdio.out('setbg [-h] [color]');
       stdio.nl();
@@ -17,7 +18,7 @@ window.Dash$_settermtxt = function(args) {
       break;
     default:
       // Get all elements with the class .term-text
-      const termTextElements = document.querySelectorAll('.term-text');
+      termTextElements = document.querySelectorAll('.term-text');
       // Set the color for each element
 
       termTextElements.forEach(element => {
@@ -25,6 +26,6 @@ window.Dash$_settermtxt = function(args) {
         element.style.color = args.argv[0] || '#ffffff';
       });
       document.querySelector('#term-input').style.color = args.argv[0] || '#ffffff'; document.querySelector('span#term_prompt').style.color = args.argv[0] || '#ffffff'
-      GLOBAL_STDIO_TERM_TEXT_COLOR = args.argv[0] || '#ffffff';
+      window.GLOBAL_STDIO_TERM_TEXT_COLOR = args.argv[0] || '#ffffff';
     }
 }

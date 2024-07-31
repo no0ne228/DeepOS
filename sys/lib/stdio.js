@@ -8,41 +8,39 @@ import { devlib$detect_mobile } from '/sys/lib/devlib.js'
 
 export const stdio = {
   "out": function(outText) { // Print text
-    if (GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
+    if (window.GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
       var text = document.createElement('span'); // Initialize new element
       text.textContent = outText; // Change new element's text
       text.className = 'term-text'; // Change new element's class
-      text.style.color = GLOBAL_STDIO_TERM_TEXT_COLOR; // Change new element's color
-      document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(text); // Append element to terminal
+      text.style.color = window.GLOBAL_STDIO_TERM_TEXT_COLOR; // Change new element's color
+      document.querySelector(window.GLOBAL_STDIO_TERM_TEXT).appendChild(text); // Append element to terminal
     } else {
       console.warn('Error: cannot execute out() without running terminal');
     }
   },
   "nl": function(x) { // Print a new line
-    if (GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
+    if (window.GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
+      var hr = document.createElement('hr');
       console.log('debug: stdio.nl typeof x: ' + typeof x);
       if (typeof x == 'undefined') {
-        var hr = document.createElement('hr'); // Initialize new line
-        document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
+        document.querySelector(window.GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
       } else if (typeof x == 'number') {
-        var hr = document.createElement('hr'); // Initialize new line
         if (devlib$detect_mobile()) {
           hr.style.margin = `${x}%`
         } else {
           hr.style.margin = `${x / 2}%`;
         }
-        document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
+        document.querySelector(window.GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
       } else {
-        var hr = document.createElement('hr'); // Initialize new line
-        document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
+        document.querySelector(window.GLOBAL_STDIO_TERM_TEXT).appendChild(hr); // Append new line to terminal
       }
     } else {
       console.warn('Error: cannot execute nl() without running terminal');
     }
   },
   "in": function(finite, callback) { // Get user input
-    if (GLOBAL_STDIO_TERM != '') { // Check if terminal exists
-      if (!(GLOBAL_STDIO_INPUT) && GLOBAL_STDIO_INPUT_ALLOWED) {
+    if (window.GLOBAL_STDIO_TERM != '') { // Check if terminal exists
+      if (!(window.GLOBAL_STDIO_INPUT) && window.GLOBAL_STDIO_INPUT_ALLOWED) {
         console.log('Launched input');
         var input = document.createElement('input'); // Initialize new element
         input.id = 'term-input'; // Set input id
@@ -51,9 +49,9 @@ export const stdio = {
         input.autocomplete = 'off'; // Disable autocomplete
         input.autocapitalize = 'none'; // Disaple autocapitalize
         //input.contentEditable = true;
-        document.querySelector(GLOBAL_STDIO_TERM).appendChild(input); // Append input
+        document.querySelector(window.GLOBAL_STDIO_TERM).appendChild(input); // Append input
         document.getElementById('term-input').focus(); // Focus input
-        GLOBAL_STDIO_INPUT = true; // Set input state
+        window.GLOBAL_STDIO_INPUT = true; // Set input state
         var text = ''; // Declare text value
         document.getElementById('term-input').addEventListener('keypress', function (e) { // Detect when user finished writing input
           if (e.key == 'Enter') {
@@ -61,7 +59,7 @@ export const stdio = {
             if (finite) {
               document.activeElement.blur(); // Unfocus input
               document.getElementById('term-input').remove(); // Remove input
-              GLOBAL_STDIO_INPUT = false; // Set input state
+              window.GLOBAL_STDIO_INPUT = false; // Set input state
             } else {
               //Clear input
               document.getElementById('term-input').value = '';
@@ -75,12 +73,12 @@ export const stdio = {
             document.getElementById('term-input').focus(); // Focus on input
           }
         });
-        document.querySelector(GLOBAL_STDIO_TERM).addEventListener('click', function() {
+        document.querySelector(window.GLOBAL_STDIO_TERM).addEventListener('click', function() {
           if (localStorage.getItem('DeepOS.tmp.input') == 'true') { // Check if user is writing input
             document.getElementById('term-input').focus(); // Focus on input
           }
         });
-        document.getElementById('term-input').addEventListener('input', function(e) {
+        document.getElementById('term-input').addEventListener('input', function() {
           let lastChar = this.value.length;
           this.style.width = (lastChar * 7.8) + 'px';
         });
@@ -93,8 +91,7 @@ export const stdio = {
   },
   "getin": function() {
     if ('DeepOS.Term' in localStorage) {
-      if ('DeepOS.tmp.lastinput' in localStorage) {
-      } else {
+      if (!('DeepOS.tmp.lastinput' in localStorage)) {
         console.warn('Error: cannot execute getin() without ready input');
       }
     } else {
@@ -102,17 +99,17 @@ export const stdio = {
     }
   },
   "endin": function() {
-    if (GLOBAL_STDIO_INPUT == true) { // Check if terminal exists
+    if (window.GLOBAL_STDIO_INPUT == true) { // Check if terminal exists
       document.activeElement.blur(); // Unfocus input
       document.getElementById('term-input').remove(); // Remove input
-      GLOBAL_STDIO_INPUT = false; // Set input state
+      window.GLOBAL_STDIO_INPUT = false; // Set input state
     } else {
       console.warn('Error: cannot execute endin() without running terminal');
     }
   },
   "clear": function() {
-    if (GLOBAL_STDIO_TERM_TEXT) {
-      document.querySelector(GLOBAL_STDIO_TERM_TEXT).innerHTML = '';
+    if (window.GLOBAL_STDIO_TERM_TEXT) {
+      document.querySelector(window.GLOBAL_STDIO_TERM_TEXT).innerHTML = '';
     } else {
       console.warn('Error: cannot execute clear() without running terminal');
     }
@@ -128,12 +125,12 @@ export const stdio = {
     /**fout means formatted output, for example if format is 'b'
      * then the text will be bold
      */
-    if (GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
+    if (window.GLOBAL_STDIO_TERM_TEXT != '') { // Check if terminal exists
       var text = document.createElement('span'); // Initialize new element
       text.innerHTML = '<' + format + '>' + outText + '</' + format + '>'; // Change new element's text
       text.className = 'term-text'; // Change new element's class
-      text.style.color = GLOBAL_STDIO_TERM_TEXT_COLOR; // Change new element's color
-      document.querySelector(GLOBAL_STDIO_TERM_TEXT).appendChild(text); // Append element to terminal
+      text.style.color = window.GLOBAL_STDIO_TERM_TEXT_COLOR; // Change new element's color
+      document.querySelector(window.GLOBAL_STDIO_TERM_TEXT).appendChild(text); // Append element to terminal
     } else {
       console.warn('Error: cannot execute out() without running terminal');
     }

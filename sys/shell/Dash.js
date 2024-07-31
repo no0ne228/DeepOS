@@ -14,13 +14,14 @@ export function Dash$(raw_cmd) {
   localStorage.setItem('DeepOS.Dash.history', JSON.stringify(history));
   let args = '';
   let cargv = [];
+  var script = document.createElement('script');
   if (cmd != raw_cmd) {
     args = String$FromPos(raw_cmd, cmd.length + 1);
     cargv = String$ToSpaceArray(args);
   }
   if (fs.exists(`/bin/${cmd}.js`)) {
     if (document.getElementById(`Dash_${cmd}`) == null) {
-      var script = document.createElement('script');
+      //var script = document.createElement('script');
       script.src = `/bin/${cmd}.js`;
       script.id = `Dash_${cmd}`;
       script.type = 'module';
@@ -68,7 +69,7 @@ export function Dash$(raw_cmd) {
     }
     if (pkg_exists) {
       if (document.getElementById(`pkg_${cmd}`) == null) {
-        var script = document.createElement('script');
+        //var script = document.createElement('script');
         script.textContent = pkgs[pkg_num].code;
         script.id = `pkg_${cmd}`;
         script.type = 'module';

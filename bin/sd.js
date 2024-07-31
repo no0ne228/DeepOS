@@ -7,6 +7,7 @@ import { vfs$setdir } from '/sys/lib/vfs.js';
 import { Term } from '/sys/lib/Term.js';
 
 window.Dash$_sd = function(args) {
+  let quiet = false;
   switch (args.argv[0]) {
     case '--help', '-h':
       stdio.out('sd [-hq]');
@@ -19,7 +20,7 @@ window.Dash$_sd = function(args) {
       stdio.nl();
       break;
     default:
-      const quiet = (args.argv.includes('--quiet') || args.argv.includes('-q'))
+      quiet = (args.argv.includes('--quiet') || args.argv.includes('-q'))
       vfs$setdir(args.argv[0], function(status) {
         switch (status) {
           case 0:
