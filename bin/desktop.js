@@ -17,7 +17,7 @@ window.Dash$_desktop = function() {
     }
   });
   desktop.init();
-  var window = new Window({
+  var win = new Window({
     width: '50vw',
     height: '50vh',
     src: '/index.html',
@@ -28,5 +28,5 @@ window.Dash$_desktop = function() {
     title: 'Dash Terminal',
     icon: '/usr/icons/apps/terminal.png'
   });
-  window.init();
+  win.init();
 }
