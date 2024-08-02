@@ -86,6 +86,15 @@ export class Window {
     this.windowCloseIcon.onclick = function() {
       document.querySelector('div#window').remove();
     }
+    /*add to running application list*/
+    /*find free id*/
+    this.windowApp_id = 1;
+    for (let app in window.GLOBAL_APPS_RUNNING) {
+      if (app[1] === this.windowApp_id) {
+        this.windowApp_id++;
+      }
+    }
+    window.GLOBAL_APPS_RUNNING.push([data.src, this.windowApp_id]);
   }
   init() {
     document.querySelector("body").appendChild(this.allWindow);
@@ -145,10 +154,24 @@ export class Desktop {
       }
       document.querySelector('span#desktop_topbar_time').textContent = `${hours}:${minutes}`;
     }, 1000);
+    /*desktop taskbar*/
+    this.taskbar = document.createElement('div');
+    this.taskbar.style.background = 'rgba(255, 255, 255, 0.2)';
+    this.taskbar.style.backdropFilter = 'blur(10px)';
+    this.taskbar.style.webkitBackdropFilter = 'blur(10px)';
+    this.taskbar.style.borderRadius = '10px';
+    this.taskbar.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+    this.taskbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+    this.taskbar.style.position = 'absolute';
+    this.taskbar.style.left = '0';
+    this.taskbar.style.top = '5vh';
+    this.taskbar.style.width = '5vh';
+    this.taskbar.style.height = '95vh';
   }
   init() {
     document.querySelector("body").appendChild(this.bg);
     document.querySelector("body").appendChild(this.topbar);
     document.querySelector('body').appendChild(this.topbar_time);
+    document.querySelector('body').appendChild(this.taskbar);
   }
 }

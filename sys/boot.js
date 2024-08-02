@@ -13,6 +13,11 @@ import { fs } from '/sys/lib/fs.js';
 import { loadScript } from '/sys/lib/loadScript.js';
 
 // Environment variables
+
+//System
+// apps running
+window.GLOBAL_APPS_RUNNING = [];
+
 // Boot
 // status
 window.GLOBAL_BOOT_STATUS = 'DEFAULT_TERM';
