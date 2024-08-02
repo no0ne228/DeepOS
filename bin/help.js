@@ -23,10 +23,14 @@ window.Dash$_help = function() {
   stdio.nl();
   stdio.out('mkfile [... ...]');
   stdio.nl();
-  stdio.out('sysinfo [-a, -v]');
+  stdio.out('sysinfo [-a., -v]');
   stdio.nl();
   stdio.out('dc [...]');
   stdio.nl();
   stdio.out('sd [...]');
+  stdio.nl();
+  stdio.out('settermbg [...]');
+  stdio.nl();
+  stdio.nl('settermtxt [...]');
   stdio.nl();
 }
